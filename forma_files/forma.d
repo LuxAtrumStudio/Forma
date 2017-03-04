@@ -1,0 +1,1 @@
+forma.o: forma.cpp
