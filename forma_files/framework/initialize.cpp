@@ -1,17 +1,22 @@
+#include <pessum.h>
 #include "../gl_headers.hpp"
 #include "initialize.hpp"
-#include <pessum.h>
 
 void forma::framework::InitGlfw() {
   if (!glfwInit()) {
     pessum::logging::Log("fatal", "Failed to initialize GLFW",
                          "forma/framework/initialize/InitGlfw");
   }
+  GlfwVersion();
+  GlfwProfile();
 }
 
 void forma::framework::InitGlew() {
   glewExperimental = GL_TRUE;
-  if (glewInit() != GLEW_OK) {
+  GLenum err = glewInit();
+  if (err != GLEW_OK) {
+    std::string log_string = "Failed to initialize GLEW: ";
+    printf("GLEW ERROR: %s\n", glewGetErrorString(err));
     pessum::logging::Log("fatal", "Failed to initialize GLEW",
                          "forma/framework/initialize/InitGlew");
   }

@@ -1,41 +1,41 @@
-#include "../gl_headers.hpp"
 #include "window.hpp"
-#include <pessum.h>
+#include "window_class.hpp"
+#include <vector>
 
-forma::window::Window::Window() { window_presets.fill(0); }
-
-forma::window::Window::~Window() {}
-
-void forma::window::Window::WindowPreset(int preset, int setting) {
-  window_presets.at(preset) = setting;
+namespace forma {
+namespace window {
+std::vector<Window> forma_windows;
+}
 }
 
-void forma::window::Window::CreateWindow(int width, int height,
-                                         std::string name) {
-  gl_window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
-  if (gl_window == nullptr) {
-    pessum::logging::Log("error", "Failed to create GlFW window",
-                         "forma/window/window/CreateWindow");
-    glfwTerminate();
-  }
-  glfwMakeContextCurrent(gl_window);
-  window_size = std::make_pair(width, height);
-}
-
-bool forma::window::Window::ShouldClose() {
-  if (glfwWindowShouldClose(gl_window) == GL_FALSE) {
-    return (false);
-  } else {
+bool forma::window::AllClosed() {
+  if (forma_windows.size() == 0) {
     return (true);
+  } else {
+    return (false);
   }
 }
 
-std::pair<int, int> forma::window::Window::GetSize() { return (window_size); }
-
-std::pair<int, int> forma::window::Window::GetFrameBufferSize() {
-  int width, height;
-  glfwGetFramebufferSize(gl_window, &width, &height);
-  return (std::make_pair(width, height));
+void forma::window::ShouldClose() {
+  for (int i = 0; i < forma_windows.size(); i++) {
+    if (forma_windows[i].ShouldClose() == true) {
+      forma_windows[i].DeleteWindow();
+      forma_windows[i].~Window();
+      forma_windows.erase(forma_windows.begin() + i);
+    }
+  }
 }
 
-void forma::window::Window::Update() { glfwSwapBuffers(gl_window); }
+void forma::window::UpdateAll() {
+  ShouldClose();
+  for (int i = 0; i < forma_windows.size(); i++) {
+    forma_windows[i].Update();
+  }
+}
+
+int forma::window::CreateWindow(int width, int height, std::string name) {
+  Window new_window;
+  new_window.CreateWindow(width, height, name);
+  forma_windows.push_back(new_window);
+  return (forma_windows.size() - 1);
+}

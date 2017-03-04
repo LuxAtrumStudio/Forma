@@ -1,4 +1,8 @@
 #ifndef FORMA_FORMA_HPP
 #define FORMA_FORMA_HPP
-namespace forma {}
+#include "forma_headers.hpp"
+#include <vector>
+namespace forma {
+void FormaLoop();
+}
 #endif
