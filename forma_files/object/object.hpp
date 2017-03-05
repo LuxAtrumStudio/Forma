@@ -6,10 +6,7 @@
 
 namespace forma {
   namespace object {
-    extern std::vector<Shader> shaders;
     extern std::vector<Object> objects;
-    int CreateShader(std::string vertex_shader = "",
-                     std::string fragment_shader = "");
     int CreateObject();
     void DisplayAll();
   }
