@@ -1,11 +1,11 @@
+#include <vector>
 #include "window.hpp"
 #include "window_class.hpp"
-#include <vector>
 
 namespace forma {
-namespace window {
-std::vector<Window> forma_windows;
-}
+  namespace window {
+    std::vector<Window> forma_windows;
+  }
 }
 
 bool forma::window::AllClosed() {
@@ -35,6 +35,7 @@ void forma::window::UpdateAll() {
 
 int forma::window::CreateWindow(int width, int height, std::string name) {
   Window new_window;
+  new_window.WindowPreset(RESIZEABLE, false);
   new_window.CreateWindow(width, height, name);
   forma_windows.push_back(new_window);
   return (forma_windows.size() - 1);

@@ -25,7 +25,7 @@ void forma::window::Window::CreateWindow(int width, int height,
   gl_window = glfwCreateWindow(width, height, name.c_str(), nullptr, nullptr);
   if (gl_window == nullptr) {
     pessum::logging::Log("error", "Failed to create GlFW window",
-                         "forma/window/window/CreateWindow");
+                         "forma/window/window_class/CreateWindow");
     glfwTerminate();
   }
   glfwMakeContextCurrent(gl_window);
@@ -66,8 +66,8 @@ void forma::window::Window::Clear() {
   glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void forma::window::Window::SetClearColor(double red, double green, double blue,
-                                          double alpha) {
+void forma::window::Window::SetClearColor(float red, float green, float blue,
+                                          float alpha) {
   clear_color = make_quad(red, green, blue, alpha);
 }
 

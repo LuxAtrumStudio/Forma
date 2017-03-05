@@ -16,3 +16,7 @@ subsystem:
 	@printf "WINDOW/\n";
 	@setterm -fore white
 	@cd window && $(MAKE)
+	@setterm -fore cyan
+	@printf "OBJECT/\n";
+	@setterm -fore white
+	@cd object && $(MAKE)

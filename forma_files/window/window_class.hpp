@@ -28,11 +28,11 @@ namespace window {
     std::pair<int, int> GetFrameBufferSize();
     void Update();
     void Clear();
-    void SetClearColor(double red, double green, double blue, double alpha);
+    void SetClearColor(float red, float green, float blue, float alpha);
 
    private:
     void ReadPresets();
-    quad<double, double, double, double> clear_color;
+    quad<float, float, float, float> clear_color;
     GLFWwindow* gl_window = nullptr;
     std::pair<int, int> window_size;
     std::array<int, 7> window_presets;
