@@ -5,6 +5,7 @@ namespace forma {
     enum PolygonFaces { FRONT = 0, BACK = 1, FRONT_AND_BACK = 2 };
     enum PolygonMode { POINT = 0, LINE = 1, FILL = 2 };
     void PolygonMode(int face, int mode);
+    void GlfwError(int error_code, const char* error);
   }
 }
 #endif

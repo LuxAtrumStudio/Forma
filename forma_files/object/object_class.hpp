@@ -5,6 +5,13 @@
 #include "../types/type_headers.hpp"
 namespace forma {
   namespace object {
+    enum CoordAxis { S = 0, T = 1, R = 2 };
+    enum TextureWrapping {
+      REPEATE = 0,
+      MIRRORED_REPEAT = 1,
+      CLAMP_TO_EDGE = 2,
+      CLAMP_TO_BORDER = 3
+    };
     class Object {
      public:
       Object();
@@ -17,13 +24,23 @@ namespace forma {
       void SetShaderProgram(int index);
       void CreateObject();
 
+      void LoadTexture(std::string file_path);
+
+      // Texture funcitons
+      void SetTextureWrapping(int axis, int wrapping);
+      void SetTextureBorderColor(float red, float green, float blue,
+                                 float alpha);
+
      private:
       void CreateVao();
-      unsigned int vao, vbo, ebo;
+      unsigned int vao, vbo, ebo, texture;
       int shader_program_index = 0;
       std::vector<triple<float, float, float>> obj_vertices;
       std::vector<int> obj_indices;
-      // unsigned int gl_vbo, gl_shader_program, gl_vao, gl_ebo;
+      // Texture data
+      int img_width, img_height;
+      unsigned char* img;
+      int obj_tex_dim = 2;
     };
   }
 }

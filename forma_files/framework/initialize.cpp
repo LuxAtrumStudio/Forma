@@ -1,8 +1,10 @@
 #include <pessum.h>
 #include "../gl_headers.hpp"
+#include "gl_settings.hpp"
 #include "initialize.hpp"
 
 void forma::framework::InitGlfw() {
+  glfwSetErrorCallback(GlfwError);
   if (!glfwInit()) {
     pessum::logging::Log("fatal", "Failed to initialize GLFW",
                          "forma/framework/initialize/InitGlfw");

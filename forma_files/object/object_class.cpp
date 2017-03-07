@@ -60,6 +60,53 @@ void forma::object::Object::SetShaderProgram(int index) {
 
 void forma::object::Object::CreateObject() { CreateVao(); }
 
+void forma::object::Object::LoadTexture(std::string file_path) {
+  img = SOIL_load_image(file_path.c_str(), &img_width, &img_height, 0,
+                        SOIL_LOAD_RGBA);
+  glGenTextures(1, &texture);
+  glBindTexture(GL_TEXTURE_2D, texture);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, img_width, img_height, 0, GL_RGBA,
+               GL_UNSIGNED_BYTE, img);
+  glGenerateMipmap(GL_TEXTURE_2D);
+  SOIL_free_image_data(img);
+  glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void forma::object::Object::SetTextureWrapping(int axis, int wrapping) {
+  int gl_axis = GL_TEXTURE_WRAP_S, gl_wrapping = GL_REPEAT,
+      gl_dim = GL_TEXTURE_2D;
+  if (axis == T) {
+    gl_axis = GL_TEXTURE_WRAP_T;
+  } else if (axis == R) {
+    gl_axis = GL_TEXTURE_WRAP_R;
+  }
+  if (wrapping == MIRRORED_REPEAT) {
+    gl_wrapping = GL_MIRRORED_REPEAT;
+  } else if (wrapping == CLAMP_TO_EDGE) {
+    gl_wrapping = GL_CLAMP_TO_EDGE;
+  } else if (wrapping == CLAMP_TO_BORDER) {
+    gl_wrapping = GL_CLAMP_TO_BORDER;
+  }
+  if (obj_tex_dim == 1) {
+    gl_dim = GL_TEXTURE_1D;
+  } else if (obj_tex_dim == 3) {
+    gl_dim = GL_TEXTURE_3D;
+  }
+  glTexParameteri(gl_dim, gl_axis, gl_wrapping);
+}
+
+void forma::object::Object::SetTextureBorderColor(float red, float green,
+                                                  float blue, float alpha) {
+  int gl_dim = GL_TEXTURE_2D;
+  if (obj_tex_dim == 1) {
+    gl_dim = GL_TEXTURE_1D;
+  } else if (obj_tex_dim == 3) {
+    gl_dim = GL_TEXTURE_3D;
+  }
+  float color[] = {red, green, blue, alpha};
+  glTexParameterfv(gl_dim, GL_TEXTURE_BORDER_COLOR, color);
+}
+
 void forma::object::Object::CreateVao() {
   std::vector<float> gl_vertices;
   for (int i = 0; i < obj_vertices.size(); i++) {

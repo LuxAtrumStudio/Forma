@@ -1,3 +1,5 @@
+#include <pessum.h>
+#include <string>
 #include "../gl_headers.hpp"
 #include "gl_settings.hpp"
 
@@ -18,4 +20,9 @@ void forma::framework::PolygonMode(int face, int mode) {
     gl_mode = GL_FILL;
   }
   glPolygonMode(gl_face, gl_mode);
+}
+
+void forma::framework::GlfwError(int error_code, const char* error) {
+  pessum::logging::Log("error", error, "GLFW ERROR",
+                       std::to_string(error_code));
 }

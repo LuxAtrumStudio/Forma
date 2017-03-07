@@ -22,7 +22,7 @@ int main(int argc, char const* argv[]) {
   });
   forma::object::objects[obj].SetIndices({0, 1, 3, 1, 2, 3});
   forma::object::objects[obj].CreateObject();
-  forma::framework::PolygonMode(2, 1);
+  // forma::framework::PolygonMode(2, 1);
   // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   forma::FormaLoop();
   glfwTerminate();
