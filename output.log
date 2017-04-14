@@ -1,5 +1,5 @@
-[18:38:13]<TIME>{TimeStamp}{}Mon Mar  6 18:38:13 2017
-[18:38:13]<INFO>{pessum/logging}{InitializeLogging}Opened Log File output.log
-[18:38:13]<INFO>{forma/framework/initialize}{GlfwVersion}Set OpenGL version to 4.3
-[18:38:14]<INFO>{pessum/logging}{TerminatedLogging}Terminated Log File
-[18:38:14]<TIME>{TimeStamp}{}Mon Mar  6 18:38:14 2017
+[20:49:29]<TIME>{TimeStamp}{}Thu Apr 13 20:49:29 2017
+[20:49:29]<INFO>{pessum/logging}{InitializeLogging}Opened Log File output.log
+[20:49:29]<INFO>{forma/framework/initialize}{GlfwVersion}Set OpenGL version to 4.3
+[20:49:40]<INFO>{pessum/logging}{TerminatedLogging}Terminated Log File
+[20:49:40]<TIME>{TimeStamp}{}Thu Apr 13 20:49:40 2017

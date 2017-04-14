@@ -1,2 +1,4 @@
 *.o
 *.d
+*.log
+old_forma_files/*

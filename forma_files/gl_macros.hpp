@@ -1,2 +1,0 @@
-#define GL_VERSION_MAJOR 4
-#define GL_VERSION_MINOR 3

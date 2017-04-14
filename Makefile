@@ -1,3 +1,6 @@
+ifndef VERBOSE
+.SILENT:
+endif
 export COMPILER = clang++
 export FLAGS = -MMD -std=c++11 -w -c
 CPP_FILES = $(wildcard *.cpp)
@@ -18,7 +21,8 @@ $(NAME): $(TOP_DIR) $(OBJ_FILES)
 	$(COMPILER) $(OBJ_FILES) -o $(NAME) $(LINK)
 
 %.o: %.cpp
-	$(COMPILER) $(FLAGS) -o $(notdir $*).o $*.cpp
+	@printf "Compiling $*.cpp...\n"
+	@$(COMPILER) $(FLAGS) -o $(notdir $*).o $*.cpp
 
 .PHONY : subsystem
 subsystem:
@@ -36,3 +40,25 @@ clean:
 
 .PHONY : new
 new: clean all
+
+.PHONY : install
+install: clean all
+	cp $(NAME) ~/bin/
+
+.PHONY : log
+log:
+	less output.log
+
+.PHONY : lib
+lib: all
+	@printf "Comiling lib...\n"
+	@ar rcs lib$(NAME).a $(OBJ_FILES)
+	@printf "Copying lib to /usr/local/lib/...\n"
+	@sudo cp lib$(NAME).a /usr/local/lib/ -u
+	@printf "Copying base headers to /usr/local/include/...\n"
+	@sudo cp *.h /usr/local/include/
+	@printf "Copying project headers to /usr/local/include/...\n"
+	@sudo find . -name '*.hpp' -exec cp --parents \{\} /usr/local/include/ \;
+	@setterm -fore green
+	@printf "==========>>>>>>>>>>Compiled Installed Lib<<<<<<<<<<==========\n"
+	@setterm -fore white

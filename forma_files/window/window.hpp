@@ -1,14 +1,21 @@
-#ifndef FORMA_WINDOW_WINDOW_HPP
-#define FORMA_WINDOW_WINDOW_HPP
-#include "window_class.hpp"
-#include <vector>
+#ifndef FORMA_WINDOW_HPP
+#define FORMA_WINDOW_HPP
+#include <array>
+#include <string>
+#include "../gl_headers.hpp"
 namespace forma {
-namespace window {
-extern std::vector<Window> forma_windows;
-bool AllClosed();
-void ShouldClose();
-void UpdateAll();
-int CreateWindow(int width, int height, std::string name);
-}
+  class Window {
+   public:
+    void Preset(int option, int setting);
+    void CreateWindow(int width, int height, std::string name);
+    void DeleteWindow();
+    bool ShouldClose();
+    void Display();
+    void Clear();
+
+   private:
+    GLFWwindow* ptr = NULL;
+    std::array<float, 4> clear_color{{0.0f, 0.0f, 0.0f, 1.0f}};
+  };
 }
 #endif
