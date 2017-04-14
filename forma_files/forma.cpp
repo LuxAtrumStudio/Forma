@@ -12,7 +12,7 @@ forma::Window forma::InitForma(std::string name, int width, int height) {
   return (win);
 }
 
-void forma::TermForma() {}
+void forma::TermForma() { glfwTerminate(); }
 
 void forma::InitGlfw(int v_major, int v_minor) {
   glfwSetErrorCallback(GlError);
