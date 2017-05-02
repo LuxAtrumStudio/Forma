@@ -1,3 +1,3 @@
 #include "forma.hpp"
-#include "input.hpp"
-#include "window/window.hpp"
+#include "input/input_headers.hpp"
+#include "window/window_headers.hpp"

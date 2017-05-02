@@ -9,7 +9,3 @@ all: $(OBJ_FILES) subsystem
 
 .PHONY : subsystem
 subsystem:
-	@setterm -fore cyan; printf "$(shell pwd)/input:\n"; setterm -fore white
-	cd input && $(MAKE)
-	@setterm -fore cyan; printf "$(shell pwd)/window:\n"; setterm -fore white
-	cd window && $(MAKE)

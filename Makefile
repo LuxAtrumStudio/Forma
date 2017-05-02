@@ -26,6 +26,7 @@ $(NAME): $(TOP_DIR) $(OBJ_FILES)
 
 .PHONY : subsystem
 subsystem:
+	@setterm -fore blue; printf "$(shell pwd)/forma_files:\n"; setterm -fore white
 	@cd forma_files && $(MAKE)
 
 .PHONY : clean

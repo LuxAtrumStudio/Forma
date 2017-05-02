@@ -1,6 +1,6 @@
 #include <pessum.h>
 #include "../gl_headers.hpp"
-#include "../input.hpp"
+#include "../input/input_headers.hpp"
 #include "window.hpp"
 
 void forma::Window::Preset(int option, int setting) {}

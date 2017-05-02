@@ -1,4 +1,4 @@
-#include "gl_headers.hpp"
+#include "../gl_headers.hpp"
 #include "input.hpp"
 
 namespace forma {
