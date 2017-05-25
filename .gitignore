@@ -1,4 +1,5 @@
 *.o
 *.d
 *.log
+*.swp
 old_forma_files/*

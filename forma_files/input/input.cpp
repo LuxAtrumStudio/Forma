@@ -1,3 +1,5 @@
+#include <pessum.h>
+#include <iostream>
 #include "../gl_headers.hpp"
 #include "input.hpp"
 
@@ -12,7 +14,7 @@ void forma::KeyCallback(GLFWwindow* win, int key, int scan_code, int action,
 
 void forma::HandleKey(Window win) {
   for (int i = 0; i < key_calls.size(); i++) {
-    if (win() == std::get<0>(key_calls[i])) {
+    if (*win() == std::get<0>(key_calls[i])) {
       win.KeyPress(key_calls[i]);
       key_calls.erase(key_calls.begin() + i);
     }

@@ -3,42 +3,102 @@
 #include "../input/input_headers.hpp"
 #include "window.hpp"
 
-void forma::Window::Preset(int option, int setting) {}
+forma::Window::Window() {}
 
-void forma::Window::CreateWindow(int width, int height, std::string name) {
+forma::Window::Window(int width, int height) {
   if (ptr != NULL) {
-    pessum::Log(pessum::WARNING, "Window not destroyed before initialized",
-                "forma/Window/CreateWindow");
+    pessum::Log(pessum::WARNING, "Window not destroyed before initialization",
+                "forma::Window::Window");
     DeleteWindow();
   }
-  ptr = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
+  ptr = std::make_shared<GLFWwindow*>(
+      glfwCreateWindow(width, height, "(null)", NULL, NULL));
   if (ptr == NULL) {
     pessum::Log(pessum::WARNING, "Failed to create GLFW window",
-                "forma/Window/CreateWindow");
+                "forma::Window::CreateWindow");
   } else {
-    glfwMakeContextCurrent(ptr);
+    glfwMakeContextCurrent(*ptr);
     int fb_width, fb_height;
-    glfwGetFramebufferSize(ptr, &fb_width, &fb_height);
+    glfwGetFramebufferSize(*ptr, &fb_width, &fb_height);
     glViewport(0, 0, fb_width, fb_height);
-    glfwSetKeyCallback(ptr, KeyCallback);
-    // SetKeyAction(GLFW_KEY_ESCAPE, -1, GLFW_PRESS, -1, CloseWindow);
+    glfwSetKeyCallback(*ptr, KeyCallback);
+  }
+}
+
+forma::Window::Window(std::string name, int width, int height) {
+  if (ptr != NULL) {
+    pessum::Log(pessum::WARNING, "Window not destroyed before initialization",
+                "forma::Window::Window");
+    DeleteWindow();
+  }
+  ptr = std::make_shared<GLFWwindow*>(
+      glfwCreateWindow(width, height, name.c_str(), NULL, NULL));
+  if (ptr == NULL) {
+    pessum::Log(pessum::WARNING, "Failed to create GLFW window",
+                "forma::Window::CreateWindow");
+  } else {
+    glfwMakeContextCurrent(*ptr);
+    int fb_width, fb_height;
+    glfwGetFramebufferSize(*ptr, &fb_width, &fb_height);
+    glViewport(0, 0, fb_width, fb_height);
+    glfwSetKeyCallback(*ptr, KeyCallback);
+  }
+}
+
+forma::Window::Window(const Window& copy) {
+  ptr = copy.ptr;
+  clear_color = copy.clear_color;
+  key_actions = copy.key_actions;
+}
+
+forma::Window::~Window() {
+  if (ptr.use_count() == 1) {
+    glfwDestroyWindow(*ptr);
+    ptr = NULL;
+  }
+  clear_color = {{0.0f, 0.0f, 0.0f, 1.0f}};
+}
+
+void forma::Window::Preset(int option, int setting) {
+  glfwWindowHint(option, setting);
+}
+
+void forma::Window::CreateWindow(std::string name, int width, int height) {
+  if (ptr != NULL) {
+    pessum::Log(pessum::WARNING, "Window not destroyed before initialized",
+                "forma::Window::CreateWindow");
+    DeleteWindow();
+  }
+  ptr = std::make_shared<GLFWwindow*>(
+      glfwCreateWindow(width, height, name.c_str(), NULL, NULL));
+  if (ptr == NULL) {
+    pessum::Log(pessum::WARNING, "Failed to create GLFW window",
+                "forma::Window::CreateWindow");
+  } else {
+    glfwMakeContextCurrent(*ptr);
+    int fb_width, fb_height;
+    glfwGetFramebufferSize(*ptr, &fb_width, &fb_height);
+    glViewport(0, 0, fb_width, fb_height);
+    glfwSetKeyCallback(*ptr, KeyCallback);
   }
 }
 
 void forma::Window::DeleteWindow() {
   if (ptr != NULL) {
-    glfwDestroyWindow(ptr);
+    if (ptr.use_count() == 1) {
+      glfwDestroyWindow(*ptr);
+    }
     ptr = NULL;
   } else {
     pessum::Log(pessum::WARNING, "Window already destroyed",
-                "forma/Window/DeleteWindow");
+                "forma::Window::DeleteWindow");
     ptr = NULL;
   }
 }
 
 bool forma::Window::ShouldClose() {
   if (ptr != NULL) {
-    if (glfwWindowShouldClose(ptr) == GL_FALSE) {
+    if (glfwWindowShouldClose(*ptr) == GL_FALSE) {
       return (false);
     } else {
       return (true);
@@ -49,22 +109,22 @@ bool forma::Window::ShouldClose() {
 
 void forma::Window::MakeCurrent() {
   if (ptr != NULL) {
-    glfwMakeContextCurrent(ptr);
+    glfwMakeContextCurrent(*ptr);
     int fb_width, fb_height;
-    glfwGetFramebufferSize(ptr, &fb_width, &fb_height);
+    glfwGetFramebufferSize(*ptr, &fb_width, &fb_height);
     glViewport(0, 0, fb_width, fb_height);
   } else {
     pessum::Log(pessum::WARNING, "Window not initialized",
-                "forma/Window/MakeCurrent");
+                "forma::Window::MakeCurrent");
   }
 }
 
 void forma::Window::Display() {
   if (ptr != NULL) {
-    glfwSwapBuffers(ptr);
+    glfwSwapBuffers(*ptr);
   } else {
     pessum::Log(pessum::WARNING, "Window not initialized",
-                "forma/Window/Display");
+                "forma::Window::Display");
   }
 }
 
@@ -75,7 +135,7 @@ void forma::Window::Clear() {
     glClear(GL_COLOR_BUFFER_BIT);
   } else {
     pessum::Log(pessum::WARNING, "Window not initialized",
-                "forma/Window/Clear");
+                "forma::Window::Clear");
   }
 }
 
@@ -87,29 +147,30 @@ void forma::Window::KeyPress(
     // pessum::Log(pessum::DATA, "%i,%i,%i,%i", "KeyPress", key_def[0],
     // key_def[1],
     //             key_def[2], key_def[3]);
-    std::map<std::array<int, 4>, void (*)(GLFWwindow*)>::iterator it;
+    std::map<std::array<int, 4>,
+             void (*)(std::shared_ptr<GLFWwindow*>)>::iterator it;
     it = key_actions.find(key_def);
     if (it != key_actions.end()) {
       it->second(ptr);
     }
   } else {
     pessum::Log(pessum::WARNING, "Window not initialized",
-                "forma/Window/KeyPress");
+                "forma::Window::KeyPress");
   }
 }
 
 void forma::Window::SetKeyAction(int key, int scan_code, int action, int mode,
-                                 void (*func)(GLFWwindow*)) {
+                                 void (*func)(std::shared_ptr<GLFWwindow*>)) {
   key_actions[std::array<int, 4>{{key, scan_code, action, mode}}] = func;
 }
 
 void forma::Window::CloseWindow() {
   if (ptr != NULL) {
-    glfwSetWindowShouldClose(ptr, GL_TRUE);
+    glfwSetWindowShouldClose(*ptr, GL_TRUE);
   } else {
     pessum::Log(pessum::WARNING, "Window not initialized",
-                "forma/Window/CloseWindow");
+                "forma::Window::CloseWindow");
   }
 }
 
-GLFWwindow* forma::Window::operator()() { return (ptr); }
+std::shared_ptr<GLFWwindow*> forma::Window::operator()() { return (ptr); }

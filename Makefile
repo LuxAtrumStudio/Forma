@@ -12,12 +12,12 @@ NAME = forma
 all: $(TOP_DIR) subsystem $(NAME)
 	@setterm -fore green
 	@printf "==========>>>>>>>>>>Compiled $(NAME)<<<<<<<<<<==========\n"
-	@setterm -fore white
+	@setterm -default
 
 $(NAME): $(TOP_DIR) $(OBJ_FILES)
 	@setterm -fore red
 	@printf ">>>>>>>>>>----------Core Compile----------<<<<<<<<<<\n"
-	@setterm -fore white
+	@setterm -default
 	$(COMPILER) $(OBJ_FILES) -o $(NAME) $(LINK)
 
 %.o: %.cpp
@@ -26,7 +26,7 @@ $(NAME): $(TOP_DIR) $(OBJ_FILES)
 
 .PHONY : subsystem
 subsystem:
-	@setterm -fore blue; printf "$(shell pwd)/forma_files:\n"; setterm -fore white
+	@setterm -fore cyan; printf "$(shell pwd)/forma_files:\n"; setterm -fore white
 	@cd forma_files && $(MAKE)
 
 .PHONY : clean

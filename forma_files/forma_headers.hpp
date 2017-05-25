@@ -1,3 +1,5 @@
 #include "forma.hpp"
 #include "input/input_headers.hpp"
+#include "object/object_headers.hpp"
 #include "window/window_headers.hpp"
+#include "shader/shader.hpp"
