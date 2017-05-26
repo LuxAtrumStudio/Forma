@@ -23,8 +23,8 @@ class Object{
   private:
     GLuint vao;
     Shader shader_program;
-    std::vector<float> vertices;
-    std::vector<int> indices;
+    std::vector<GLfloat> vertices;
+    std::vector<GLint> indices;
 };
 }
 #endif

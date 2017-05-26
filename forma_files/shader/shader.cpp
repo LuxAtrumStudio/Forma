@@ -86,9 +86,9 @@ void forma::Shader::AddShader(int shader, std::string shader_path){
     std::string info_str (info_log.begin(), info_log.end());
     std::string shader_type = "";
     if(shader == FORMA_VERTEX_SHADER){
-      shader_type = "Vertex Shader";
+      shader_type = "SHADER::FRAGMENT";
     }else if(shader == FORMA_FRAGMENT_SHADER){
-      shader_type = "Fragment Shader";
+      shader_type = "SHADER::FRAGMENT";
     }
     pessum::Log(pessum::ERROR, "%s:%s", "forma::Shader::AddShader", shader_type.c_str(), info_str.c_str());
   }else{
@@ -128,7 +128,7 @@ void forma::Shader::CreateProgram(){
       std::vector<char> info_log(log_length + 1);
       glGetProgramInfoLog(*shader_program, log_length, NULL, &info_log[0]);
       std::string info_str(info_log.begin(), info_log.end());
-      pessum::Log(pessum::ERROR, "%s", "forma::Shader::CreateProgram", info_str.c_str());
+      pessum::Log(pessum::ERROR, "SHADER::PROGRAM:%s", "forma::Shader::CreateProgram", info_str.c_str());
     }
   }
 }

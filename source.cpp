@@ -3,8 +3,6 @@
 #include "forma_files/forma_headers.hpp"
 #include "forma_files/gl_headers.hpp"
 
-#define FORMA_VERSION "0.0.3"
-
 void Close(std::shared_ptr<GLFWwindow*> win) {
   glfwSetWindowShouldClose(*win, GL_TRUE);
 }
@@ -40,8 +38,11 @@ int main(int argc, char const* argv[]) {
   shade.CreateProgram();
   forma::Object obj;
   obj.SetShaderProgram(shade);
-  obj.SetVertices({-0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.0, 0.5, 0.0});
+  //obj.SetVertices({-0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.0, 0.5, 0.0});
+  obj.SetVertices({0.5, 0.5, 0.0, 0.5, -0.5, 0.0, -0.5, -0.5, 0.0, -0.5, 0.5, 0.0});
+  obj.SetIndices({0,1,3,1,2,3});
   obj.CreateObject();
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   while (win.ShouldClose() == false) {
     glfwPollEvents();
     forma::HandleKey(win);
