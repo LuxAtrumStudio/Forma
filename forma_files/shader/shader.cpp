@@ -10,6 +10,7 @@ forma::Shader::Shader(){
 }
 
 forma::Shader::Shader(const Shader& copy){
+  created = copy.created;
   vs = copy.vs;
   gs = copy.gs;
   ts = copy.gs;
@@ -50,7 +51,7 @@ void forma::Shader::AddShader(int shader, std::string shader_path){
     shader_string += line + '\n';
    }
    load.close();
-  }else{
+  }else if (shader_path != ""){
     pessum::Log(pessum::WARNING, "Invalid shader path \"%s\"", "forma::Shader::AddShader", shader_path.c_str());
   }
   GLuint shader_uint;
@@ -102,6 +103,47 @@ void forma::Shader::AddShader(int shader, std::string shader_path){
   }
 }
 
+void forma::Shader::Uniform(std::string name, int type, int number, ...){
+  GLint uniform_location = glGetUniformLocation(*shader_program, name.c_str());
+  if(uniform_location == -1){
+    pessum::Log(pessum::WARNING, "OpenGL couldn't find %s uniform in the shader program", "forma::Shader::Uniform", name.c_str());
+  }else{
+    glUseProgram(*shader_program);
+    if(type == FORMA_INT){
+      GLint a, b, c, d;
+    } else if(type == FORMA_UNSIGNED_INT){
+      GLuint a, b, c, d;
+    }else if(type == FORMA_FLOAT){
+      GLfloat a, b, c, d;
+      va_list args;
+      va_start(args, number);
+      if(number >= 1){
+        a = va_arg(args, double);
+        if(number == 1){
+          glUniform1f(uniform_location, a);
+        }
+      }
+      if(number >= 2){
+        b = va_arg(args, double);
+        if(number == 2){
+          glUniform2f(uniform_location, a, b);
+        }
+      }
+      if(number >= 3){
+        c = va_arg(args, double);
+        if(number == 3){
+          glUniform3f(uniform_location, a, b, c);
+        }
+      }
+      if(number == 4){
+        d = va_arg(args, double);
+        glUniform4f(uniform_location, a, b, c, d);
+      }
+      va_end(args);
+    }
+  }
+}
+
 void forma::Shader::CreateProgram(){
   if(vs == false || fs == false){
     pessum::Log(pessum::WARNING, "Shader program must define vetex and fragment shaders", "forma::Shader::CreateProgram");
@@ -129,6 +171,15 @@ void forma::Shader::CreateProgram(){
       glGetProgramInfoLog(*shader_program, log_length, NULL, &info_log[0]);
       std::string info_str(info_log.begin(), info_log.end());
       pessum::Log(pessum::ERROR, "SHADER::PROGRAM:%s", "forma::Shader::CreateProgram", info_str.c_str());
+    }else{
+      created = true;
     }
   }
+}
+
+GLuint forma::Shader::operator()(){
+  if(shader_program == NULL){
+    pessum::Log(pessum::WARNING, "Shader does not exist", "forma::Shader::operator()");
+  }
+  return(*shader_program);
 }

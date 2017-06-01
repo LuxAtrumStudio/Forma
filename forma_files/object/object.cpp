@@ -46,7 +46,15 @@ void forma::Object::SetShaderProgram(Shader in_shader_program){
 }
 
 void forma::Object::Display(){
-  glUseProgram(shader_program());
+  if(shader_program.created == true){
+    glUseProgram(shader_program());
+  }else{
+    pessum::Log(pessum::WARNING, "Shader has not been set", "forma::Object::Display");
+    shader_program.AddShader(FORMA_VERTEX_SHADER, "");
+    shader_program.AddShader(FORMA_FRAGMENT_SHADER, "");
+    shader_program.CreateProgram();
+    glUseProgram(shader_program());
+  }
   glBindVertexArray(vao);
   glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
   //glDrawArrays(GL_TRIANGLES, 0, 3);

@@ -54,3 +54,13 @@ void forma::GetVersion(int& major, int& minor, int& patch) {
   minor = FORMA_VERSION_MINOR;
   patch = FORMA_VERSION_PATCH;
 }
+
+void forma::SetDisplayMode(int mode){
+  if(mode == FORMA_DISPLAY_FILL){
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  }else if(mode == FORMA_DISPLAY_LINE){
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  }else if(mode == FORMA_DISPLAY_POINT){
+    glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+  }
+}

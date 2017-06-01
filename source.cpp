@@ -2,6 +2,8 @@
 #include <iostream>
 #include "forma_files/forma_headers.hpp"
 #include "forma_files/gl_headers.hpp"
+#include <math.h>
+
 
 void Close(std::shared_ptr<GLFWwindow*> win) {
   glfwSetWindowShouldClose(*win, GL_TRUE);
@@ -42,11 +44,19 @@ int main(int argc, char const* argv[]) {
   obj.SetVertices({0.5, 0.5, 0.0, 0.5, -0.5, 0.0, -0.5, -0.5, 0.0, -0.5, 0.5, 0.0});
   obj.SetIndices({0,1,3,1,2,3});
   obj.CreateObject();
-  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+  forma::Object obj_2;
+  obj_2.SetShaderProgram(shade);
+  obj_2.SetVertices({1.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0});
+  obj_2.SetIndices({0,1,3,1,2,3});
+  obj_2.CreateObject();
   while (win.ShouldClose() == false) {
+    float time = glfwGetTime();
+    float green = (sin(time) / 2) + 0.5;
+    shade.Uniform("our_color", forma::FORMA_FLOAT, 4, 0.0, green, 0.0, 1.0);
     glfwPollEvents();
     forma::HandleKey(win);
     obj.Display();
+    obj_2.Display();
     win.Display();
   }
   win.DeleteWindow();

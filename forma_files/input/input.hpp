@@ -1,5 +1,5 @@
-#ifndef FORMA_INPUT_HPP
-#define FORMA_INPUT_HPP
+#ifndef FORMA_INPUT_INPUT_HPP
+#define FORMA_INPUT_INPUT_HPP
 #include <queue>
 #include <vector>
 #include "../gl_headers.hpp"

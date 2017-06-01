@@ -1,5 +1,5 @@
-#ifndef FORMA_WINDOW_HPP
-#define FORMA_WINDOW_HPP
+#ifndef FORMA_WINDOW_WINDOW_HPP
+#define FORMA_WINDOW_WINDOW_HPP
 #include <array>
 #include <map>
 #include <memory>

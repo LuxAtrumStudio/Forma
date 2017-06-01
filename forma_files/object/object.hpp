@@ -1,5 +1,5 @@
-#ifndef FORMA_OBJECT_HPP
-#define FORMA_OBJECT_HPP
+#ifndef FORMA_OBJECT_OBJECT_HPP
+#define FORMA_OBJECT_OBJECT_HPP
 #include "../gl_headers.hpp"
 #include "../shader/shader_headers.hpp"
 #include <string>
