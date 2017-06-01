@@ -6,19 +6,34 @@ forma::Object::Object() {}
 
 forma::Object::Object(const Object& copy) {}
 
-forma::Object::~Object() {}
+forma::Object::~Object() {
+  vertex_data.clear();
+  indices.clear();
+}
 
 void forma::Object::CreateObject() {
   glGenVertexArrays(1, &vao);
   glBindVertexArray(vao);
   // VBO
+  std::vector<GLfloat> vertices;
+  int vertex_index = 0;
+  int total = 0;
+  while(vertex_index != vertex_data["vertices"].values.size()){
+    for(std::map<std::string, VertexAttrib>::iterator it = vertex_data.begin(); it != vertex_data.end(); ++it){
+      vertices.insert(vertices.end(), it->second.values.begin() + it->second.size * vertex_index, it->second.values.begin() + (it->second.size * vertex_index) + it->second.size);
+      if(vertex_index == 0){
+        total += it->second.size;
+      }
+    }
+    vertex_index++;
+  }
   GLuint vbo;
   glGenBuffers(1, &vbo);
   glBindBuffer(GL_ARRAY_BUFFER, vbo);
   glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(GLfloat), &vertices[0], GL_STATIC_DRAW);
   // EBO
   if(indices.size() == 0){
-    for(int i = 0; i < vertices.size() / 3; i++){
+    for(int i = 0; i < vertex_data["vertices"].values.size() / 3; i++){
       indices.push_back(i);
     }
   }
@@ -26,15 +41,35 @@ void forma::Object::CreateObject() {
   glGenBuffers(1, &ebo);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(GLfloat), &indices[0], GL_STATIC_DRAW);
-
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), (GLvoid*)0);
-  glEnableVertexAttribArray(0);
+  int count = 0;
+  for(std::map<std::string, VertexAttrib>::iterator it = vertex_data.begin(); it != vertex_data.end(); ++it){
+    //pessum::Log(pessum::DEBUG, "%s, %i, %i, %i
+    glVertexAttribPointer(it->second.ptr, it->second.size, GL_FLOAT, GL_FALSE, total * sizeof(GLfloat), (GLvoid*)(count * sizeof(GLfloat)));
+    glEnableVertexAttribArray(it->second.ptr);
+    count += it->second.size;
+  }
   
   glBindVertexArray(0);
 }
 
 void forma::Object::SetVertices(std::vector<float> in_vertices){
-  vertices = in_vertices;
+  vertex_data["vertices"].ptr = 0;
+  vertex_data["vertices"].size = 3;
+  vertex_data["vertices"].values = in_vertices;
+}
+
+void forma::Object::AddVertexAttrib(std::string name, int ptr, int size, std::vector<float> in_values){
+  vertex_data[name].ptr = ptr;
+  vertex_data[name].size = size;
+  vertex_data[name].values = in_values;
+}
+
+void forma::Object::RemoveVertexAttrib(std::string name){
+  if(vertex_data.find(name) != vertex_data.end()){
+    vertex_data.erase(vertex_data.find(name));
+  }else{
+    pessum::Log(pessum::WARNING, "No vertex attribute %s exists", "forma::Object::RemoveVertexAttrib", name.c_str());
+  }
 }
 
 void forma::Object::SetIndices(std::vector<int> in_indices){

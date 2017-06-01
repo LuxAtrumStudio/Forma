@@ -3,7 +3,7 @@
 
 #define FORMA_VERSON_MAJOR 0
 #define FORMA_VERSION_MINOR 0
-#define FORMA_VERSION_PATCH 7
+#define FORMA_VERSION_PATCH 8
 
 #include <string>
 #include "gl_headers.hpp"
