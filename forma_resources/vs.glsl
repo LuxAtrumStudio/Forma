@@ -8,6 +8,5 @@ out vec3 vertex_color;
 void main()
 {
   gl_Position = vec4(position, 1.0);
-
-  vertex_color = in_color;
+  vertex_color = position;
 }

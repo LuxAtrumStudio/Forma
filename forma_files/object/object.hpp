@@ -9,7 +9,6 @@ namespace forma{
 class Object{
   public:
     struct VertexAttrib{
-      //VertexAttrib(int in_ptr, int in_size, std::vector<GLfloat> in_values);
       int ptr, size;
       std::vector<GLfloat> values;
     };

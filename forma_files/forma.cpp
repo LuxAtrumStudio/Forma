@@ -50,7 +50,7 @@ void forma::SetWindowPreset(int setting, bool value) {
 }
 
 void forma::GetVersion(int& major, int& minor, int& patch) {
-  major = FORMA_VERSON_MAJOR;
+  major = FORMA_VERSION_MAJOR;
   minor = FORMA_VERSION_MINOR;
   patch = FORMA_VERSION_PATCH;
 }
