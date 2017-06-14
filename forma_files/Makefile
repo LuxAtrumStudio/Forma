@@ -1,19 +1,23 @@
+SHELL =     /bin/zsh
 CPP_FILES = $(wildcard *.cpp)
 OBJ_FILES = $(notdir $(CPP_FILES:.cpp=.o))
+COLOR = MAGENTA
 
 all: $(OBJ_FILES) subsystem
 
-%.o: %.cpp %.hpp
-	@printf "Compiling $*.cpp...\n"
-	@$(COMPILER) $(FLAGS) -o $(notdir $*).o $*.cpp
+%.o: %.cpp
+	@str="Compiling $*.cpp"; \
+	  printf '%s%*.*s' "$$str" 0 $$(($(PAD_LENGTH) - $${#str})) "$(PAD)"	  
+	@$(COMPILER) $(FLAGS) -o $(notdir $*).o $*.cpp 2> $@.log; \
+	  RESULT=$$?; \
+	  if [ $$RESULT -ne 0 ]; then \
+	    $(crossmark); \
+	  else \
+	    $(checkmark); \
+	  fi; \
+	  cat $@.log; \
+	  rm -f $@.log
 
 .PHONY : subsystem
 subsystem:
-	@setterm -fore magenta; printf "$(shell pwd)/input:\n"; setterm -fore white
-	cd input && $(MAKE)
-	@setterm -fore magenta; printf "$(shell pwd)/object:\n"; setterm -fore white
-	cd object && $(MAKE)
-	@setterm -fore magenta; printf "$(shell pwd)/shader:\n"; setterm -fore white
-	cd shader && $(MAKE)
-	@setterm -fore magenta; printf "$(shell pwd)/window:\n"; setterm -fore white
-	cd window && $(MAKE)
+	#sub_dirs
