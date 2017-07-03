@@ -1,6 +1,7 @@
-#include <pessum.h>
 #include <iostream>
-#include "forma_files/forma_headers.hpp"
+#include <pessum/pessum.hpp>
+
+#include "forma.hpp"
 
 void PessumLogHandle(std::pair<int, std::string> entry) {
   if (entry.first == pessum::ERROR) {
@@ -15,14 +16,14 @@ void PessumLogHandle(std::pair<int, std::string> entry) {
     system("setterm -fore green");
   } else if (entry.first == pessum::DATA) {
     system("setterm -fore cyan");
-  } else if (entry.first == pessum::INFO){
+  } else if (entry.first == pessum::INFO) {
     system("setterm -fore white");
   }
   std::cout << entry.second << "\n";
   system("setterm -default");
 }
 
-int main(int argc, char const* argv[]) {
+int main(int argc, const char *argv[]) {
   pessum::SetLogHandle(PessumLogHandle);
   forma::InitForma();
   forma::TermForma();
