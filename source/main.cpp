@@ -3,6 +3,8 @@
 
 #include "forma.hpp"
 
+using namespace forma;
+
 void PessumLogHandle(std::pair<int, std::string> entry) {
   if (entry.first == pessum::ERROR) {
     system("setterm -fore red");
@@ -23,7 +25,7 @@ void PessumLogHandle(std::pair<int, std::string> entry) {
   system("setterm -default");
 }
 
-int main(int argc, const char *argv[]) {
+int main(int argc, const char* argv[]) {
   pessum::SetLogHandle(PessumLogHandle);
   forma::InitForma();
   forma::TermForma();

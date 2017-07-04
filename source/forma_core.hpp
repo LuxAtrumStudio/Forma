@@ -8,9 +8,20 @@
 #include <string>
 
 namespace forma {
-void InitForma();
-void TermForma();
-void GetVersion(int &major, int &minor, int &patch);
+  void InitForma();
+  void TermForma();
+
+  void InitGlfw();
+  void InitGlad();
+
+  void TermGlfw();
+  void TermGlad();
+
+  void GetVersion(int& major, int& minor, int& patch);
+
+  void GlfwError(int error_code, const char* error);
+
+  void GladError();
 }
 
 #endif
