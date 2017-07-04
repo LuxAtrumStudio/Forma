@@ -3,7 +3,7 @@
 
 #define FORMA_VERSION_MAJOR 0
 #define FORMA_VERSION_MINOR 1
-#define FORMA_VERSION_PATCH 0
+#define FORMA_VERSION_PATCH 2
 
 #include <string>
 

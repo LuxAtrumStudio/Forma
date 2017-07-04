@@ -28,6 +28,12 @@ void PessumLogHandle(std::pair<int, std::string> entry) {
 int main(int argc, const char* argv[]) {
   pessum::SetLogHandle(PessumLogHandle);
   forma::InitForma();
+  Window win(FULLSCREEN);
+  win.SetViewport();
+  while (glfwWindowShouldClose(*win()) == false) {
+    win.Update();
+  }
+  win.Delete();
   forma::TermForma();
   pessum::SaveLog("out.log");
   return 0;

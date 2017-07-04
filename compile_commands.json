@@ -1,0 +1,67 @@
+[
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-std=c++11", 
+            "-w", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./glad.o", 
+            "glad.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "glad.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-std=c++11", 
+            "-w", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./forma_core.o", 
+            "forma_core.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "forma_core.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-std=c++11", 
+            "-w", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./main.o", 
+            "main.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "main.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-std=c++11", 
+            "-w", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./window/window.o", 
+            "window/window.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "window/window.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-std=c++11", 
+            "-w", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./glfw.o", 
+            "glfw.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "glfw.cpp"
+    }
+]

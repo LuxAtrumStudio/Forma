@@ -1,6 +1,7 @@
 *.o
 *.d
 *.log
+*.swp
 build/*
-pessum
-pessum-test
+forma
+forma-test

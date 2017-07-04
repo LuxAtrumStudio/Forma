@@ -19,20 +19,32 @@ namespace forma {
     BORDERLESS_FULLSCREEN = (1u << 8)
   };
   class Window {
+    enum FullscreenMode { DEFAULT, BORDERLESS };
+
    public:
     Window();
-    Window(unsigned int state);
+    explicit Window(unsigned int state);
     Window(int width, int height, unsigned int state = 0);
     Window(const Window& copy);
     ~Window();
+
+    void Delete();
+
+    void MakeCurrent();
+    void SetViewport();
+
+    void Update();
+
+    std::shared_ptr<GLFWwindow*> operator()();
 
    protected:
    private:
     void GenorateWindow();
     void ReadState(unsigned int state);
     std::shared_ptr<GLFWwindow*> ptr = NULL;
-    std::array<int, 2> size;
+    std::array<int, 2> size = {{500, 500}};
     std::string name;
+    int full_screen = 0;
   };
 }  // namespace forma
 
