@@ -30,14 +30,18 @@ int main(int argc, const char* argv[]) {
   forma::window::Window win;
   win.SetKeyAction(std::array<int, 4>{{GLFW_KEY_ESCAPE, -1, -1, -1}},
                    forma::window::QUIT);
-  win.SetKeyAction(std::array<int, 4>{{GLFW_KEY_ESCAPE, -1, -1, -1}},
-                   forma::window::QUIT);
-  while (glfwWindowShouldClose(*win()) == false) {
+  forma::window::Window win_2;
+  win_2.SetKeyAction(std::array<int, 4>{{GLFW_KEY_Q, -1, -1, -1}},
+                     forma::window::QUIT);
+  while (win.ShouldClose() == false && win_2.ShouldClose() == false) {
     glfwPollEvents();
     forma::input::HandleKeyCall(win);
+    forma::input::HandleKeyCall(win_2);
     win.Update();
+    win_2.Update();
   }
   win.Delete();
+  win_2.Delete();
   forma::TermForma();
   pessum::SaveLog("out.log");
   return 0;

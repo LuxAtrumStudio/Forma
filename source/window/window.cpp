@@ -26,13 +26,12 @@ forma::window::Window::Window(int width, int height, unsigned int state) {
   MakeCurrent();
 }
 
-forma::window::Window::Window(const Window& copy) {
-  ptr = copy.ptr;
-  key_actions = copy.key_actions;
-  size = copy.size;
-  name = copy.name;
-  full_screen = copy.full_screen;
-}
+forma::window::Window::Window(const Window& copy)
+    : ptr(copy.ptr),
+      key_actions(copy.key_actions),
+      size(copy.size),
+      name(copy.name),
+      full_screen(copy.full_screen) {}
 
 forma::window::Window::~Window() {
   if (ptr.use_count() == 1 && ptr != NULL) {
@@ -54,6 +53,14 @@ void forma::window::Window::Close() {
   }
 }
 
+bool forma::window::Window::ShouldClose() {
+  if (ptr != NULL) {
+    return glfwWindowShouldClose(*ptr);
+  } else {
+    return true;
+  }
+}
+
 void forma::window::Window::MakeCurrent() {
   if (ptr != NULL) {
     glfwMakeContextCurrent(*ptr);
@@ -70,8 +77,17 @@ void forma::window::Window::SetViewport() {
 
 void forma::window::Window::Update() {
   if (ptr != NULL) {
+    if (glfwGetCurrentContext() != *ptr) {
+      MakeCurrent();
+    }
+    Clear();
     glfwSwapBuffers(*ptr);
   }
+}
+
+void forma::window::Window::Clear() {
+  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void forma::window::Window::SetKeyAction(

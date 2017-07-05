@@ -5,7 +5,7 @@ export TEST_DIR = test
 export BUILD_DIR = build
 
 export COMPILER = clang++
-export CPPFLAGS = -MMD -std=c++11 -w -c
+export CPPFLAGS = -MMD -std=c++14 -w -c
 export LINK = -lGL `pkg-config --static --libs glfw3` -lpessum
 export NAME = forma
 export TYPE = lib

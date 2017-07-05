@@ -7,6 +7,5 @@
 
 void forma::window::FramebufferSizeCallback(GLFWwindow* window, int width,
                                             int height) {
-  pessum::Log(pessum::DATA, "%ix%i", "", width, height);
   glViewport(0, 0, width, height);
 }

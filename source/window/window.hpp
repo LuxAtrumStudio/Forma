@@ -37,10 +37,13 @@ namespace forma {
       void Delete();
       void Close();
 
+      bool ShouldClose();
+
       void MakeCurrent();
       void SetViewport();
 
       void Update();
+      void Clear();
 
       void SetKeyAction(std::array<int, 4> key_info,
                         void (*func)(std::shared_ptr<GLFWwindow*>));
@@ -57,7 +60,7 @@ namespace forma {
       std::vector<std::tuple<std::array<int, 4>, int,
                              void (*)(std::shared_ptr<GLFWwindow*>)>>
           key_actions;
-      std::array<int, 2> size = {{958, 1051}};
+      std::array<int, 2> size = {{500, 500}};
       std::string name;
       int full_screen = 0;
     };
