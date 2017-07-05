@@ -15,7 +15,7 @@ forma::shader::Shader::Shader(const Shader& copy) {}
 
 forma::shader::Shader::~Shader() {}
 
-void forma::shader::Shader::AddShader(int shader, std::string shader_path) {
+void forma::shader::Shader::AddShader(int shader, std::string& shader_path) {
   std::string shader_str;
   if (shader_path != "") {
     shader_str = GetShaderString(shader_path);
@@ -58,17 +58,18 @@ void forma::shader::Shader::AddShader(int shader, std::string shader_path) {
 }
 
 void forma::shader::Shader::CreateProgram() {
+  std::string none = "";
   if (shaders[VERTEX].first == false) {
     pessum::Log(pessum::WARNING,
                 "Shader program requires defined vertex shader",
                 "forma::shader::Shader::CreateProgram");
-    AddShader(VERTEX, "");
+    AddShader(VERTEX, none);
   }
   if (shaders[FRAGMENT].first == false) {
     pessum::Log(pessum::WARNING,
                 "Shader program requires defined fragment shader",
                 "forma::shader::Shader::CreateProgram");
-    AddShader(FRAGMENT, "");
+    AddShader(FRAGMENT, none);
   }
   program = std::make_shared<unsigned int>(glCreateProgram());
   for (int i = 0; i < 3; i++) {
@@ -80,7 +81,7 @@ void forma::shader::Shader::CreateProgram() {
 
   GLint success, log_length;
   glGetProgramiv(*program, GL_LINK_STATUS, &success);
-  if (success == false) {
+  if (success == 0) {
     glGetProgramiv(*program, GL_INFO_LOG_LENGTH, &log_length);
     std::vector<char> info_log(log_length + 1);
     glGetProgramInfoLog(*program, log_length, NULL, &info_log[0]);
@@ -91,7 +92,7 @@ void forma::shader::Shader::CreateProgram() {
   }
 }
 
-void forma::shader::Shader::AddUniformi(std::string name, int v0) {
+void forma::shader::Shader::AddUniformi(std::string& name, int v0) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
     return;
@@ -100,7 +101,7 @@ void forma::shader::Shader::AddUniformi(std::string name, int v0) {
   glUniform1i(uniform_location, v0);
 }
 
-void forma::shader::Shader::AddUniformi(std::string name, int v0, int v1) {
+void forma::shader::Shader::AddUniformi(std::string& name, int v0, int v1) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
     return;
@@ -109,7 +110,7 @@ void forma::shader::Shader::AddUniformi(std::string name, int v0, int v1) {
   glUniform2i(uniform_location, v0, v1);
 }
 
-void forma::shader::Shader::AddUniformi(std::string name, int v0, int v1,
+void forma::shader::Shader::AddUniformi(std::string& name, int v0, int v1,
                                         int v2) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
@@ -119,7 +120,7 @@ void forma::shader::Shader::AddUniformi(std::string name, int v0, int v1,
   glUniform3i(uniform_location, v0, v1, v2);
 }
 
-void forma::shader::Shader::AddUniformi(std::string name, int v0, int v1,
+void forma::shader::Shader::AddUniformi(std::string& name, int v0, int v1,
                                         int v2, int v3) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
@@ -129,7 +130,7 @@ void forma::shader::Shader::AddUniformi(std::string name, int v0, int v1,
   glUniform4i(uniform_location, v0, v1, v2, v3);
 }
 
-void forma::shader::Shader::AddUniformui(std::string name, unsigned int v0) {
+void forma::shader::Shader::AddUniformui(std::string& name, unsigned int v0) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
     return;
@@ -138,7 +139,7 @@ void forma::shader::Shader::AddUniformui(std::string name, unsigned int v0) {
   glUniform1ui(uniform_location, v0);
 }
 
-void forma::shader::Shader::AddUniformui(std::string name, unsigned int v0,
+void forma::shader::Shader::AddUniformui(std::string& name, unsigned int v0,
                                          unsigned int v1) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
@@ -148,7 +149,7 @@ void forma::shader::Shader::AddUniformui(std::string name, unsigned int v0,
   glUniform2i(uniform_location, v0, v1);
 }
 
-void forma::shader::Shader::AddUniformui(std::string name, unsigned int v0,
+void forma::shader::Shader::AddUniformui(std::string& name, unsigned int v0,
                                          unsigned int v1, unsigned int v2) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
@@ -158,7 +159,7 @@ void forma::shader::Shader::AddUniformui(std::string name, unsigned int v0,
   glUniform3ui(uniform_location, v0, v1, v2);
 }
 
-void forma::shader::Shader::AddUniformui(std::string name, unsigned int v0,
+void forma::shader::Shader::AddUniformui(std::string& name, unsigned int v0,
                                          unsigned int v1, unsigned int v2,
                                          unsigned int v3) {
   int uniform_location = GetUniformLocation(name);
@@ -169,7 +170,7 @@ void forma::shader::Shader::AddUniformui(std::string name, unsigned int v0,
   glUniform4ui(uniform_location, v0, v1, v2, v3);
 }
 
-void forma::shader::Shader::AddUniformf(std::string name, float v0) {
+void forma::shader::Shader::AddUniformf(std::string& name, float v0) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
     return;
@@ -178,7 +179,7 @@ void forma::shader::Shader::AddUniformf(std::string name, float v0) {
   glUniform1f(uniform_location, v0);
 }
 
-void forma::shader::Shader::AddUniformf(std::string name, float v0, float v1) {
+void forma::shader::Shader::AddUniformf(std::string& name, float v0, float v1) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
     return;
@@ -187,7 +188,7 @@ void forma::shader::Shader::AddUniformf(std::string name, float v0, float v1) {
   glUniform2f(uniform_location, v0, v1);
 }
 
-void forma::shader::Shader::AddUniformf(std::string name, float v0, float v1,
+void forma::shader::Shader::AddUniformf(std::string& name, float v0, float v1,
                                         float v2) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {
@@ -197,7 +198,7 @@ void forma::shader::Shader::AddUniformf(std::string name, float v0, float v1,
   glUniform3f(uniform_location, v0, v1, v2);
 }
 
-void forma::shader::Shader::AddUniformf(std::string name, float v0, float v1,
+void forma::shader::Shader::AddUniformf(std::string& name, float v0, float v1,
                                         float v2, float v3) {
   int uniform_location = GetUniformLocation(name);
   if (uniform_location == -1) {

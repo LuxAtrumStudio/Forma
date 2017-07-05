@@ -20,22 +20,22 @@ namespace forma {
 
       void CreateProgram();
 
-      void AddShader(int shader, std::string shader_path);
+      void AddShader(int shader, std::string& shader_path);
 
-      void AddUniformi(std::string name, int v0);
-      void AddUniformi(std::string name, int v0, int v1);
-      void AddUniformi(std::string name, int v0, int v1, int v2);
-      void AddUniformi(std::string name, int v0, int v1, int v2, int v3);
-      void AddUniformui(std::string name, unsigned int v0);
-      void AddUniformui(std::string name, unsigned int v0, unsigned int v1);
-      void AddUniformui(std::string name, unsigned int v0, unsigned int v1,
+      void AddUniformi(std::string& name, int v0);
+      void AddUniformi(std::string& name, int v0, int v1);
+      void AddUniformi(std::string& name, int v0, int v1, int v2);
+      void AddUniformi(std::string& name, int v0, int v1, int v2, int v3);
+      void AddUniformui(std::string& name, unsigned int v0);
+      void AddUniformui(std::string& name, unsigned int v0, unsigned int v1);
+      void AddUniformui(std::string& name, unsigned int v0, unsigned int v1,
                         unsigned int v2);
-      void AddUniformui(std::string name, unsigned int v0, unsigned int v1,
+      void AddUniformui(std::string& name, unsigned int v0, unsigned int v1,
                         unsigned int v2, unsigned int v3);
-      void AddUniformf(std::string name, float v0);
-      void AddUniformf(std::string name, float v0, float v1);
-      void AddUniformf(std::string name, float v0, float v1, float v2);
-      void AddUniformf(std::string name, float v0, float v1, float v2,
+      void AddUniformf(std::string& name, float v0);
+      void AddUniformf(std::string& name, float v0, float v1);
+      void AddUniformf(std::string& name, float v0, float v1, float v2);
+      void AddUniformf(std::string& name, float v0, float v1, float v2,
                        float v3);
 
       unsigned int operator()();
