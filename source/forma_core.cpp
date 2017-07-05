@@ -11,7 +11,7 @@ void forma::InitForma() {
   pessum::Log(pessum::INFO, "Forma Version: %i.%i.%i", "forma::InitForma",
               FORMA_VERSION_MAJOR, FORMA_VERSION_MINOR, FORMA_VERSION_PATCH);
   InitGlfw();
-  Window win;
+  window::Window win;
   InitGlad();
   win.Delete();
   pessum::Log(pessum::INFO, "OpenGL Version: %i.%i", "forma::InitGlfw",
@@ -36,7 +36,7 @@ void forma::InitGlfw() {
 }
 
 void forma::InitGlad() {
-  if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+  if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) == false) {
     pessum::Log(pessum::ERROR, "Failed to initialized GLAD",
                 "forma::InitGlad()");
   }

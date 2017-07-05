@@ -2,8 +2,7 @@
 #include <pessum/pessum.hpp>
 
 #include "forma.hpp"
-
-using namespace forma;
+#include "gl_headers.hpp"
 
 void PessumLogHandle(std::pair<int, std::string> entry) {
   if (entry.first == pessum::ERROR) {
@@ -28,9 +27,14 @@ void PessumLogHandle(std::pair<int, std::string> entry) {
 int main(int argc, const char* argv[]) {
   pessum::SetLogHandle(PessumLogHandle);
   forma::InitForma();
-  Window win(FULLSCREEN);
-  win.SetViewport();
+  forma::window::Window win;
+  win.SetKeyAction(std::array<int, 4>{{GLFW_KEY_ESCAPE, -1, -1, -1}},
+                   forma::window::QUIT);
+  win.SetKeyAction(std::array<int, 4>{{GLFW_KEY_ESCAPE, -1, -1, -1}},
+                   forma::window::QUIT);
   while (glfwWindowShouldClose(*win()) == false) {
+    glfwPollEvents();
+    forma::input::HandleKeyCall(win);
     win.Update();
   }
   win.Delete();
