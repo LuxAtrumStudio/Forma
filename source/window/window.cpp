@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <array>
+#include <string>
 
 #include <pessum/pessum.hpp>
 
@@ -20,6 +21,19 @@ forma::window::Window::Window(unsigned int state) {
   MakeCurrent();
 }
 
+forma::window::Window::Window(std::string name) {
+  window_name = name;
+  GenorateWindow();
+  MakeCurrent();
+}
+
+forma::window::Window::Window(std::string name, unsigned int state) {
+  ReadState(state);
+  window_name = name;
+  GenorateWindow();
+  MakeCurrent();
+}
+
 forma::window::Window::Window(int width, int height, unsigned int state) {
   ReadState(state);
   GenorateWindow();
@@ -30,7 +44,7 @@ forma::window::Window::Window(const Window& copy)
     : ptr(copy.ptr),
       key_actions(copy.key_actions),
       size(copy.size),
-      name(copy.name),
+      window_name(copy.window_name),
       full_screen(copy.full_screen) {}
 
 forma::window::Window::~Window() {
@@ -138,14 +152,15 @@ void forma::window::Window::GenorateWindow() {
   } else {
     if (full_screen == 0) {
       ptr = std::make_shared<GLFWwindow*>(
-          glfwCreateWindow(size[0], size[1], name.c_str(), NULL, NULL));
+          glfwCreateWindow(size[0], size[1], window_name.c_str(), NULL, NULL));
     } else if (full_screen == DEFAULT) {
       ptr = std::make_shared<GLFWwindow*>(
-          glfwCreateWindow(size[0], size[1], name.c_str(), NULL, NULL));
+          glfwCreateWindow(size[0], size[1], window_name.c_str(), NULL, NULL));
     }
     if (ptr == NULL) {
       pessum::Log(pessum::WARNING, "Failed to create window %s",
-                  "forma::window::Window::GenorateWindow()", name.c_str());
+                  "forma::window::Window::GenorateWindow()",
+                  window_name.c_str());
     } else {
       glfwSetFramebufferSizeCallback(*ptr, FramebufferSizeCallback);
       glfwSetKeyCallback(*ptr, input::KeyCallback);

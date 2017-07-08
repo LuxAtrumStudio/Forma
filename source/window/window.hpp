@@ -3,6 +3,7 @@
 
 #include <array>
 #include <memory>
+#include <string>
 #include <tuple>
 #include <vector>
 
@@ -30,6 +31,8 @@ namespace forma {
      public:
       Window();
       explicit Window(unsigned int state);
+      explicit Window(std::string name);
+      Window(std::string name, unsigned int state);
       Window(int width, int height, unsigned int state = 0);
       Window(const Window& copy);
       ~Window();
@@ -61,7 +64,7 @@ namespace forma {
                              void (*)(std::shared_ptr<GLFWwindow*>)>>
           key_actions;
       std::array<int, 2> size = {{500, 500}};
-      std::string name;
+      std::string window_name;
       int full_screen = 0;
     };
   }  // namespace window

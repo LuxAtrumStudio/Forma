@@ -11,9 +11,21 @@
 
 forma::shader::Shader::Shader() {}
 
-forma::shader::Shader::Shader(const Shader& copy) {}
+forma::shader::Shader::Shader(const Shader& copy)
+    : program(copy.program), shaders(copy.shaders) {}
 
-forma::shader::Shader::~Shader() {}
+forma::shader::Shader::~Shader() {
+  if (program.use_count() == 1) {
+    for (int i = 0; i < 3; i++) {
+      if (shaders[i].first == true) {
+        shaders[i].first = false;
+        glDeleteShader(shaders[i].second);
+      }
+    }
+    glDeleteProgram(*program);
+  }
+  program = NULL;
+}
 
 void forma::shader::Shader::AddShader(int shader, std::string& shader_path) {
   std::string shader_str;
@@ -36,7 +48,7 @@ void forma::shader::Shader::AddShader(int shader, std::string& shader_path) {
   glCompileShader(shader_uint);
   int status;
   glGetShaderiv(shader_uint, GL_COMPILE_STATUS, &status);
-  if (status == false) {
+  if (status == 0) {
     int info_length;
     glGetShaderiv(shader_uint, GL_INFO_LOG_LENGTH, &info_length);
     std::vector<char> info_log(info_length + 1);
