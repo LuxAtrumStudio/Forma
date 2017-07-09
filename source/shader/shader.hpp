@@ -20,7 +20,7 @@ namespace forma {
 
       void CreateProgram();
 
-      void AddShader(int shader, std::string& shader_path);
+      void AddShader(int shader, std::string shader_path);
 
       void AddUniformi(std::string& name, int v0);
       void AddUniformi(std::string& name, int v0, int v1);
@@ -39,6 +39,8 @@ namespace forma {
                        float v3);
 
       unsigned int operator()();
+
+      bool IsValid();
 
      protected:
      private:

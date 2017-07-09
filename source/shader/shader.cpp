@@ -27,7 +27,7 @@ forma::shader::Shader::~Shader() {
   program = NULL;
 }
 
-void forma::shader::Shader::AddShader(int shader, std::string& shader_path) {
+void forma::shader::Shader::AddShader(int shader, std::string shader_path) {
   std::string shader_str;
   if (shader_path != "") {
     shader_str = GetShaderString(shader_path);
@@ -227,6 +227,14 @@ unsigned int forma::shader::Shader::operator()() {
     pessum::Log(pessum::WARNING, "Shader program not exist",
                 "forma::shader::Shader::operator()");
     return (0);
+  }
+}
+
+bool forma::shader::Shader::IsValid() {
+  if (program != NULL) {
+    return true;
+  } else {
+    return false;
   }
 }
 

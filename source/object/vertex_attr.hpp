@@ -8,12 +8,12 @@ namespace forma {
     struct VertexAttr {
      public:
       VertexAttr();
-      VertexAttr(int pos, std::vector<float> data);
-      VertexAttr(int pos, int point, std::vector<float> data);
+      VertexAttr(int pos, std::vector<float> data_);
+      VertexAttr(int pos, int point, std::vector<float> data_);
       ~VertexAttr();
 
       int size = 0, position = 0;
-      std::vector<float> vertices;
+      std::vector<float> data;
 
      private:
     };
