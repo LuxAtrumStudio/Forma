@@ -39,7 +39,7 @@ namespace forma {
 
       unsigned int vao;
     };
-  }
-}
+  }  // namespace object
+}  // namespace forma
 
 #endif

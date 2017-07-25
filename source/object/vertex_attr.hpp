@@ -17,6 +17,6 @@ namespace forma {
 
      private:
     };
-  }
-}
+  }  // namespace object
+}  // namespace forma
 #endif
