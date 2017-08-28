@@ -138,7 +138,9 @@ void forma::log::SetLogOption(unsigned int option, int setting) {
 
 std::string forma::log::GetTypeStr(unsigned int type) {
   std::string str;
-  if (type == ERROR) {
+  if (type == FATAL) {
+    str = "FATAL";
+  } else if (type == ERROR) {
     str = "ERROR";
   } else if (type == WARNING) {
     str = "WARNING";
@@ -152,6 +154,8 @@ std::string forma::log::GetTypeStr(unsigned int type) {
     str = "INFO";
   } else if (type == DATA) {
     str = "DATA";
+  } else if (type == VERSION) {
+    str = "VERSION";
   }
   return str;
 }
