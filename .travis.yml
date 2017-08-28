@@ -12,12 +12,12 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - lcov
+      - libglfw-dev
 
 before_install:
   - if [ "$CXX" == "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
   - sudo apt-get update -qq
 install:
-  - sudo apt-get install libglfw3-dev
   - sudo pip install Sphinx 
   - if [ "$CXX" == "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   - if [ "$CXX" == "g++" ]; then export CXX="g++-4.8"; fi
