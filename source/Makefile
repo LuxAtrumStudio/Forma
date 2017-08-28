@@ -68,6 +68,7 @@ $(BASE_PATH)/$(BUILD_DIR)/$(DIR)/%.o: %.cpp
 	$(call print,Building $@,$(COMPILE_COLOR))
 	$(COMPILER) $(COMMON_INCLUDE) $(CXXFLAGS) $(GCOV_FLAG) $< -o $@
 
+
 $(LIB): lib_start $(LIB_OBJ)
 	$(call print,Linking $(shell basename $(LIB)),$(LINK_COLOR))
 	if [[ ! -z "$(LIB_OBJ)" ]]; then ar rcs $(LIB) $(LIB_OBJ); fi
