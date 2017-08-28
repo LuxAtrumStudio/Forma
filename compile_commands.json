@@ -1,0 +1,65 @@
+[
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/libraries/forma/include", 
+            "-std=c++11", 
+            "-w", 
+            "-fprofile-arcs", 
+            "-ftest-coverage", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./log/log.o", 
+            "log/log.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "log/log.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/libraries/forma/include", 
+            "-I/home/arden/Programming/libraries/forma/external/googletest/googletest/include", 
+            "-std=c++11", 
+            "-w", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/test/./tmp.o", 
+            "tmp.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/test", 
+        "file": "tmp.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/libraries/forma/include", 
+            "-std=c++11", 
+            "-w", 
+            "-fprofile-arcs", 
+            "-ftest-coverage", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./main.o", 
+            "main.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "main.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/libraries/forma/include", 
+            "-std=c++11", 
+            "-w", 
+            "-fprofile-arcs", 
+            "-ftest-coverage", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./glad/glad.o", 
+            "glad/glad.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "glad/glad.cpp"
+    }
+]
