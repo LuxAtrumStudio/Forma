@@ -18,7 +18,7 @@ before_install:
   - if [ "$CXX" == "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
   - sudo apt-get update -qq
 install:
-  - git clone https://github.com/glfw/glfw && cd glfw && cmake . && sudo make install
+  - git clone https://github.com/glfw/glfw && cd glfw && cmake . && sudo make install && cd ../
   - sudo pip install Sphinx 
   - if [ "$CXX" == "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   - if [ "$CXX" == "g++" ]; then export CXX="g++-4.8"; fi
