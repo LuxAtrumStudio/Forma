@@ -17,8 +17,8 @@ before_install:
   - if [ "$CXX" == "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
   - sudo apt-get update -qq
 install:
-  - sudo apt-get install  
-  - sudo pip install  mkdocs pygments 
+  - sudo apt-get install libglfw3-dev
+  - sudo pip install Sphinx 
   - if [ "$CXX" == "g++" ]; then sudo apt-get install -qq g++-4.8; fi
   - if [ "$CXX" == "g++" ]; then export CXX="g++-4.8"; fi
 
@@ -32,13 +32,13 @@ after_success:
   - lcov --remove coverage.info '/usr/*' '*/external/*' '*/test/*' --output-file coverage.info
   - lcov --list coverage.info
   - bash <(curl -s https://codecov.io/bash) || echo "CodeCov Error"
-  - mkdocs build --clean --strict
+  - cd doc && make latexpdf
 
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: site
+  local_dir: doc/build/html
   on:
     branch: master
 
