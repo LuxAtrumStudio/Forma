@@ -12,7 +12,7 @@ Forma
    :target: https://travis-ci.org/LuxAtrumStudio/Forma
 .. image:: https://img.shields.io/codecov/c/github/LuxAtrumStudio/Forma.svg
    :target: https://codecov.io/gh/LuxAtrumStudio/Forma
-.. image:: https://api.codacy.com/project/badge/Grade/8d9103b4832d4fc79819c331fb7d0843
+.. image:: https://api.codacy.com/project/badge/Grade/9dd431f11f53414ab360f1f34e1eef49
    :target: https://www.codacy.com/app/LuxAtrumStudio/Forma/dashboard
 
 ----------
