@@ -4,7 +4,7 @@
 #include "gl.hpp"
 
 namespace forma {
-  namespace gl {
+  namespace glfw {
     void GlfwWindowHint(int target, int hint) { glfwWindowHint(target, hint); }
   }  // namespace gl
 }  // namespace forma
