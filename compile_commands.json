@@ -9,26 +9,11 @@
             "-fprofile-arcs", 
             "-ftest-coverage", 
             "-o", 
-            "/home/arden/Programming/libraries/forma/build/source/./log/log.o", 
-            "log/log.cpp"
+            "/home/arden/Programming/libraries/forma/build/source/./input/input.o", 
+            "input/input.cpp"
         ], 
         "directory": "/home/arden/Programming/libraries/forma/source", 
-        "file": "log/log.cpp"
-    }, 
-    {
-        "arguments": [
-            "c++", 
-            "-c", 
-            "-I/home/arden/Programming/libraries/forma/include", 
-            "-I/home/arden/Programming/libraries/forma/external/googletest/googletest/include", 
-            "-std=c++11", 
-            "-w", 
-            "-o", 
-            "/home/arden/Programming/libraries/forma/build/test/./log/test_log.o", 
-            "log/test_log.cpp"
-        ], 
-        "directory": "/home/arden/Programming/libraries/forma/test", 
-        "file": "log/test_log.cpp"
+        "file": "input/input.cpp"
     }, 
     {
         "arguments": [
@@ -61,6 +46,69 @@
         ], 
         "directory": "/home/arden/Programming/libraries/forma/source", 
         "file": "glad/glad.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/libraries/forma/include", 
+            "-std=c++11", 
+            "-w", 
+            "-fprofile-arcs", 
+            "-ftest-coverage", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./window/window.o", 
+            "window/window.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "window/window.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/libraries/forma/include", 
+            "-I/home/arden/Programming/libraries/forma/external/googletest/googletest/include", 
+            "-std=c++11", 
+            "-w", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/test/./log/test_log.o", 
+            "log/test_log.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/test", 
+        "file": "log/test_log.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/libraries/forma/include", 
+            "-std=c++11", 
+            "-w", 
+            "-fprofile-arcs", 
+            "-ftest-coverage", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./window/callback.o", 
+            "window/callback.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "window/callback.cpp"
+    }, 
+    {
+        "arguments": [
+            "c++", 
+            "-c", 
+            "-I/home/arden/Programming/libraries/forma/include", 
+            "-std=c++11", 
+            "-w", 
+            "-fprofile-arcs", 
+            "-ftest-coverage", 
+            "-o", 
+            "/home/arden/Programming/libraries/forma/build/source/./log/log.o", 
+            "log/log.cpp"
+        ], 
+        "directory": "/home/arden/Programming/libraries/forma/source", 
+        "file": "log/log.cpp"
     }, 
     {
         "arguments": [

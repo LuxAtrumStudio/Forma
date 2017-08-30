@@ -4,8 +4,8 @@
 
 #include "forma_core.hpp"
 #include "gl.hpp"
+#include "input/input.hpp"
 #include "log/log.hpp"
-
 #include "window/callback.hpp"
 
 bool forma::window::Window::CreateWindow() { return GenerateWindow(); }
@@ -43,6 +43,18 @@ void forma::window::Window::Display() {
 
 void forma::window::Window::Clear() { glClear(GL_COLOR_BUFFER_BIT); }
 
+void forma::window::Window::ProcessEvents() {
+  std::vector<std::array<int, 4>> key_inputs = input::GetKeyData(*window_);
+  for (std::vector<std::array<int, 4>>::iterator it = key_inputs.begin();
+       it != key_inputs.end(); ++it) {
+    std::map<std::array<int, 4>, unsigned int>::iterator action_it =
+        key_action_.find(*it);
+    if (action_it != key_action_.end()) {
+      RunAction(action_it->second);
+    }
+  }
+}
+
 bool forma::window::Window::GenerateWindow() {
   bool good = false;
   if (window_ != NULL) {
@@ -70,4 +82,13 @@ bool forma::window::Window::TerminateWindow() {
   }
   window_ = NULL;
   return good;
+}
+
+void forma::window::Window::RunAction(unsigned int action) {
+  switch (action) {
+    case ACTION_LOG:
+      log::Log(log::TRACE, "Log call from \"%s\"",
+               "forma::window::Window::RunAction", name_);
+      break;
+  }
 }

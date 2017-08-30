@@ -7,8 +7,12 @@ int main(int argc, char const* argv[]) {
   forma::window::Window win;
   win.CreateWindow();
   while (win.ShouldClose() == false) {
+    win.ProcessEvents();
+
     win.Clear();
     win.Display();
+
+    forma::input::PollEvents();
   }
   win.DestroyWindow();
   forma::TermForma();
