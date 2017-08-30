@@ -1,5 +1,5 @@
 codecov:
-  branch: master       # the branch to show by default, inherited from your git repository settings
+  branch: development       # the branch to show by default, inherited from your git repository settings
   ci:                  # [advanced] a list of custom CI domains
     - "!circleci.com"
 

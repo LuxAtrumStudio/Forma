@@ -29,15 +29,17 @@ void forma::log::Log(unsigned int type, std::string msg, std::string func,
   vsprintf(formated_string, msg.c_str(), args);
   va_end(buff_args);
   va_end(args);
-  str = std::string(formated_string);
+  str = '[' + std::string(formated_string) + ']';
   if (options[0] == true || options[1] == true) {
     time_t current = time(NULL);
-    std::string time_stamp = ctime(&current);
+    struct tm* time_info = localtime(&current);
+    char buffer[80];
+    strftime(buffer, 80, "%D %T", time_info);
+    std::string time_stamp(buffer);
     if (options[0] == false) {
-      time_stamp.erase(time_stamp.begin() + 10, time_stamp.begin() + 18);
+      time_stamp.erase(time_stamp.end() - 9, time_stamp.end());
     } else if (options[1] == false) {
-      time_stamp.erase(time_stamp.begin(), time_stamp.begin() + 11);
-      time_stamp.erase(time_stamp.end() - 6, time_stamp.end());
+      time_stamp.erase(time_stamp.begin(), time_stamp.begin() + 9);
     }
     str = "[" + time_stamp + "]" + str;
   }

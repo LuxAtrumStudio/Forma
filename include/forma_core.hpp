@@ -14,6 +14,10 @@ namespace forma {
   void TermGlad();
   void TermGlfw();
 
+  bool FormaInit();
+  bool GladInit();
+  bool GlfwInit();
+
   void OpenGLVersion(int& major, int& minor);
   void GetVersion(int& major, int& minor);
   void GetVerison(int& major, int& minor, int& patch);
