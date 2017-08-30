@@ -33,7 +33,7 @@ after_success:
   - lcov --remove coverage.info '/usr/*' '*/external/*' '*/test/*' --output-file coverage.info
   - lcov --list coverage.info
   - bash <(curl -s https://codecov.io/bash) || echo "CodeCov Error"
-  - cd doc && make latexpdf
+  - cd ../doc && make latexpdf
 
 deploy:
   provider: pages
