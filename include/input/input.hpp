@@ -9,6 +9,7 @@
 namespace forma {
   namespace input {
     void PollEvents();
+    void KeyCallBack(GLFWwindow*, int key, int scan_code, int action, int mode);
     std::vector<std::array<int, 4>> GetKeyData(GLFWwindow* win);
   }  // namespace input
 }  // namespace forma

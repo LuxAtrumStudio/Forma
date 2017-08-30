@@ -10,8 +10,8 @@ namespace forma {
 }  // namespace forma
 
 void forma::InitForma() {
-  log::Log(log::VERSION, "Forma verison: %i.%i.%i", "forma::InitForma",
-           FORMA_VERSION_MAJOR, FORMA_VERSION_MINOR, FORMA_VERSION_PATCH);
+  log::Log(log::VERSION, "Forma verison: %i.%i", "forma::InitForma",
+           FORMA_VERSION_MAJOR, FORMA_VERSION_MINOR);
   log::Log(log::VERSION, "OpenGL version: %i.%i", "forma::InitForma",
            GL_VERSION_MAJOR, GL_VERSION_MINOR);
   InitGlfw();
@@ -67,3 +67,18 @@ bool forma::FormaInit() { return forma_init_; }
 bool forma::GladInit() { return glad_init_; }
 
 bool forma::GlfwInit() { return glfw_init_; }
+
+void forma::OpenGLVersion(int& major, int& minor) {
+  major = GL_VERSION_MAJOR;
+  minor = GL_VERSION_MINOR;
+}
+
+void forma::GLFWVersion(int& major, int& minor) {
+  major = GLFW_VERSION_MAJOR;
+  minor = GLFW_VERSION_MINOR;
+}
+
+void forma::FormaVersion(int& major, int& minor) {
+  major = FORMA_VERSION_MAJOR;
+  minor = FORMA_VERSION_MINOR;
+}

@@ -8,7 +8,7 @@
 
 namespace forma {
   namespace window {
-    enum WindowActions { ACTION_NONE = 0, ACTION_LOG = 1 };
+    enum WindowActions { ACTION_NONE = 0, ACTION_QUIT = 1, ACTION_LOG = 2 };
     class Window {
      public:
       bool CreateWindow();
@@ -25,6 +25,7 @@ namespace forma {
       void Clear();
 
       void SetKeyEvent(std::array<int, 4> key_info, unsigned int set_action);
+      void SetKeyEvent(unsigned int key, unsigned int set_action);
       void SetKeyEvent(std::array<int, 4> key_info,
                        std::function<void(std::shared_ptr<GLFWwindow*>)> func);
       void ProcessEvents();

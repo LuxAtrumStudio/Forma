@@ -5,6 +5,7 @@
 #include "forma_core.hpp"
 #include "gl.hpp"
 #include "input/input.hpp"
+#include "input/key.hpp"
 #include "log/log.hpp"
 #include "window/callback.hpp"
 
@@ -43,14 +44,40 @@ void forma::window::Window::Display() {
 
 void forma::window::Window::Clear() { glClear(GL_COLOR_BUFFER_BIT); }
 
+void forma::window::Window::SetKeyEvent(std::array<int, 4> key_info,
+                                        unsigned int set_action) {
+  key_action_[key_info] = set_action;
+}
+
+void forma::window::Window::SetKeyEvent(unsigned int key,
+                                        unsigned int set_action) {
+  key_action_[std::array<int, 4>{{(int)key, -1, -1, -1}}] = set_action;
+}
+
 void forma::window::Window::ProcessEvents() {
   std::vector<std::array<int, 4>> key_inputs = input::GetKeyData(*window_);
   for (std::vector<std::array<int, 4>>::iterator it = key_inputs.begin();
        it != key_inputs.end(); ++it) {
-    std::map<std::array<int, 4>, unsigned int>::iterator action_it =
-        key_action_.find(*it);
-    if (action_it != key_action_.end()) {
-      RunAction(action_it->second);
+    for (std::map<std::array<int, 4>, unsigned int>::iterator action =
+             key_action_.begin();
+         action != key_action_.end(); ++action) {
+      if ((action->first[0] == (*it)[0] || action->first[0] == -1) &&
+          (action->first[1] == (*it)[1] || action->first[1] == -1) &&
+          (action->first[2] == (*it)[2] || action->first[2] == -1) &&
+          (action->first[3] == (*it)[3] || action->first[3] == -1)) {
+        RunAction(action->second);
+      }
+    }
+    for (std::map<std::array<int, 4>,
+                  std::function<void(std::shared_ptr<GLFWwindow*>)>>::iterator
+             action = key_function_.begin();
+         action != key_function_.end(); ++action) {
+      if ((action->first[0] == (*it)[0] || action->first[0] == -1) &&
+          (action->first[1] == (*it)[1] || action->first[1] == -1) &&
+          (action->first[2] == (*it)[2] || action->first[2] == -1) &&
+          (action->first[3] == (*it)[3] || action->first[3] == -1)) {
+        action->second(window_);
+      }
     }
   }
 }
@@ -69,6 +96,7 @@ bool forma::window::Window::GenerateWindow() {
                "forma::window::Window::GenerateWindow", name_);
     } else {
       glfwSetFramebufferSizeCallback(*window_, FramebufferSizeCallback);
+      glfwSetKeyCallback(*window_, input::KeyCallBack);
     }
   }
   return good;
@@ -89,6 +117,9 @@ void forma::window::Window::RunAction(unsigned int action) {
     case ACTION_LOG:
       log::Log(log::TRACE, "Log call from \"%s\"",
                "forma::window::Window::RunAction", name_);
+      break;
+    case ACTION_QUIT:
+      SetShouldClose(true);
       break;
   }
 }

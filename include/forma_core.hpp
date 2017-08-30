@@ -3,7 +3,6 @@
 
 #define FORMA_VERSION_MAJOR 0
 #define FORMA_VERSION_MINOR 0
-#define FORMA_VERSION_PATCH 2
 
 namespace forma {
   void InitForma();
@@ -19,8 +18,8 @@ namespace forma {
   bool GlfwInit();
 
   void OpenGLVersion(int& major, int& minor);
-  void GetVersion(int& major, int& minor);
-  void GetVerison(int& major, int& minor, int& patch);
+  void GLFWVersion(int& major, int& minor);
+  void FormaVersion(int& major, int& minor);
 }  // namespace forma
 
 #endif /* ifndef FORMA_FORMA_CORE_HPP */
