@@ -35,6 +35,9 @@ namespace forma {
     // Clears all entries from global_logs
     void ClearLogs();
 
+    // Gets all log entries
+    std::vector<std::string> GetLogs();
+
     // Gets last log entry of matching type.
     std::string GetLog(unsigned int type);
     // Gets last log entry of matching type with type data.

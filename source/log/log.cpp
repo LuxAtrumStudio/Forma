@@ -57,6 +57,14 @@ int forma::log::GetLogSize() { return global_logs.size(); }
 
 void forma::log::ClearLogs() { global_logs.clear(); }
 
+std::vector<std::string> forma::log::GetLogs() {
+  std::vector<std::string> entries;
+  for (size_t i = 0; i < global_logs.size(); i++) {
+    entries.push_back(global_logs[i].second);
+  }
+  return entries;
+}
+
 std::string forma::log::GetLog(unsigned int type) {
   std::string entry;
   if (type == NONE && global_logs.size() > 0) {
