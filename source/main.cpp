@@ -16,8 +16,8 @@ int main(int argc, char const* argv[]) {
   win.SetKeyEvent(forma::input::KEY_Q, forma::window::ACTION_LOG);
 
   forma::shader::Shader shade;
-  shade.VertexShader("shaders/vertex.glsl");
-  shade.FragmentShader("shaders/frag.glsl");
+  shade.VertexShader("resources/shaders/vertex.glsl");
+  shade.FragmentShader("resources/shaders/frag.glsl");
   shade.CompileShader();
 
   while (win.ShouldClose() == false) {
