@@ -22,9 +22,22 @@ namespace forma {
       bool IsValid();
       void Use();
 
-      void SetBool(const std::string& name, bool value);
-      void SetInt(const std::string& name, bool value);
-      void SetFloat(const std::string& name, bool value);
+      void Uniform1f(const std::string& name, float v0);
+      void Uniform2f(const std::string& name, float v0, float v1);
+      void Uniform3f(const std::string& name, float v0, float v1, float v2);
+      void Uniform4f(const std::string& name, float v0, float v1, float v2,
+                     float v3);
+      void Uniform1i(const std::string& name, int v0);
+      void Uniform2i(const std::string& name, int v0, int v1);
+      void Uniform3i(const std::string& name, int v0, int v1, int v2);
+      void Uniform4i(const std::string& name, int v0, int v1, int v2, int v3);
+      void Uniform1ui(const std::string& name, unsigned int v0);
+      void Uniform2ui(const std::string& name, unsigned int v0,
+                      unsigned int v1);
+      void Uniform3ui(const std::string& name, unsigned int v0, unsigned int v1,
+                      unsigned int v2);
+      void Uniform4ui(const std::string& name, unsigned int v0, unsigned int v1,
+                      unsigned int v2, unsigned int v3);
 
      private:
       inline bool FileExists(std::string name);

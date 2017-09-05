@@ -63,6 +63,87 @@ void forma::shader::Shader::CompileShader() {
   glDeleteShader(fragment);
 }
 
+void forma::shader::Shader::DestroyShader() {
+  if (id_.use_count() == 1) {
+    glDeleteProgram(*id_);
+  }
+  id_ = NULL;
+}
+
+bool forma::shader::Shader::IsValid() {
+  if (id_ != NULL) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+void forma::shader::Shader::Use() {
+  if (id_ != NULL) {
+    glUseProgram(*id_);
+  } else {
+    log::Log(log::WARNING, "Shader program not defined",
+             "forma::shader::Shader::Use");
+  }
+}
+void forma::shader::Shader::Uniform1f(const std::string& name, float v0) {
+  glUniform1f(glGetUniformLocation(*id_, name.c_str()), v0);
+}
+
+void forma::shader::Shader::Uniform2f(const std::string& name, float v0,
+                                      float v1) {
+  glUniform2f(glGetUniformLocation(*id_, name.c_str()), v0, v1);
+}
+
+void forma::shader::Shader::Uniform3f(const std::string& name, float v0,
+                                      float v1, float v2) {
+  glUniform3f(glGetUniformLocation(*id_, name.c_str()), v0, v1, v2);
+}
+
+void forma::shader::Shader::Uniform4f(const std::string& name, float v0,
+                                      float v1, float v2, float v3) {
+  glUniform4f(glGetUniformLocation(*id_, name.c_str()), v0, v1, v2, v3);
+}
+
+void forma::shader::Shader::Uniform1i(const std::string& name, int v0) {
+  glUniform1i(glGetUniformLocation(*id_, name.c_str()), v0);
+}
+
+void forma::shader::Shader::Uniform2i(const std::string& name, int v0, int v1) {
+  glUniform2i(glGetUniformLocation(*id_, name.c_str()), v0, v1);
+}
+
+void forma::shader::Shader::Uniform3i(const std::string& name, int v0, int v1,
+                                      int v2) {
+  glUniform3i(glGetUniformLocation(*id_, name.c_str()), v0, v1, v2);
+}
+
+void forma::shader::Shader::Uniform4i(const std::string& name, int v0, int v1,
+                                      int v2, int v3) {
+  glUniform4i(glGetUniformLocation(*id_, name.c_str()), v0, v1, v2, v3);
+}
+
+void forma::shader::Shader::Uniform1ui(const std::string& name,
+                                       unsigned int v0) {
+  glUniform1ui(glGetUniformLocation(*id_, name.c_str()), v0);
+}
+
+void forma::shader::Shader::Uniform2ui(const std::string& name, unsigned int v0,
+                                       unsigned int v1) {
+  glUniform2ui(glGetUniformLocation(*id_, name.c_str()), v0, v1);
+}
+
+void forma::shader::Shader::Uniform3ui(const std::string& name, unsigned int v0,
+                                       unsigned int v1, unsigned int v2) {
+  glUniform3ui(glGetUniformLocation(*id_, name.c_str()), v0, v1, v2);
+}
+
+void forma::shader::Shader::Uniform4ui(const std::string& name, unsigned int v0,
+                                       unsigned int v1, unsigned int v2,
+                                       unsigned int v3) {
+  glUniform4ui(glGetUniformLocation(*id_, name.c_str()), v0, v1, v2, v3);
+}
+
 bool forma::shader::Shader::FileExists(std::string name) {
   if (FILE* file = fopen(name.c_str(), "r")) {
     fclose(file);

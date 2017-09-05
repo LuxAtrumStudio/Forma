@@ -19,6 +19,7 @@ int main(int argc, char const* argv[]) {
   shade.VertexShader("resources/shaders/vertex.glsl");
   shade.FragmentShader("resources/shaders/frag.glsl");
   shade.CompileShader();
+  shade.Use();
 
   while (win.ShouldClose() == false) {
     win.ProcessEvents();
