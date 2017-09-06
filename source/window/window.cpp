@@ -17,7 +17,12 @@ void forma::window::Window::SetShouldClose(bool close) {
   should_close_ = close;
 }
 
-bool forma::window::Window::ShouldClose() { return should_close_; }
+bool forma::window::Window::ShouldClose() {
+  if (glfwWindowShouldClose(*window_) == true) {
+    return true;
+  }
+  return should_close_;
+}
 
 void forma::window::Window::MakeCurrent() {
   if (window_ != NULL && *window_ != NULL) {
@@ -33,7 +38,7 @@ void forma::window::Window::SetViewPort() {
   }
 }
 
-void forma::window::Window::Display() {
+void forma::window::Window::Update() {
   if (window_ != NULL && *window_ != NULL) {
     if (glfwGetCurrentContext() != *window_) {
       MakeCurrent();
@@ -43,6 +48,15 @@ void forma::window::Window::Display() {
 }
 
 void forma::window::Window::Clear() { glClear(GL_COLOR_BUFFER_BIT); }
+
+void forma::window::Window::Display(entity::Entity* ptr) {
+  if (window_ != NULL && *window_ != NULL) {
+    if (glfwGetCurrentContext() != *window_) {
+      MakeCurrent();
+    }
+    ptr->Display();
+  }
+}
 
 void forma::window::Window::SetKeyEvent(std::array<int, 4> key_info,
                                         unsigned int set_action) {
