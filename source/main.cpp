@@ -25,7 +25,8 @@ int main(int argc, char const* argv[]) {
     win.ProcessEvents();
 
     win.Clear();
-    win.Display();
+    // win.Display(&ent);
+    win.Update();
 
     forma::input::PollEvents();
   }

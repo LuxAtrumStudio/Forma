@@ -22,7 +22,7 @@ Forma Documentation
    ----------
 
 **Forma** is an OpenGL, and OpenAL 3D graphics and audio engine. All of
-**Forma** was written in ``C++``, with shaders in ``GLSL``. 
+**Forma** was written in ``C++``, with shaders in ``GLSL``.
 
 .. toctree::
    :maxdepth: 2

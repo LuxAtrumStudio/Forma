@@ -4,6 +4,7 @@
 #include <map>
 #include <memory>
 
+#include "../entity/entity.hpp"
 #include "../gl.hpp"
 
 namespace forma {
@@ -21,8 +22,9 @@ namespace forma {
 
       void SetViewPort();
 
-      void Display();
+      void Update();
       void Clear();
+      void Display(entity::Entity* ptr);
 
       void SetKeyEvent(std::array<int, 4> key_info, unsigned int set_action);
       void SetKeyEvent(unsigned int key, unsigned int set_action);
