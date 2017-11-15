@@ -4,6 +4,10 @@
 
 void LogCallback(std::string entry) { std::cout << entry << "\n"; }
 
+void ACallBack(std::shared_ptr<GLFWwindow*> win) {
+  forma::log::Log(forma::log::INFO, "Pressed A");
+}
+
 int main(int argc, char const* argv[]) {
   forma::log::SetLogHandle(LogCallback);
   forma::log::SetLogOption(forma::log::TIME_STAMP, true);
@@ -13,13 +17,15 @@ int main(int argc, char const* argv[]) {
   forma::window::Window win;
   win.CreateWindow();
   win.SetKeyEvent(forma::input::KEY_ESCAPE, forma::window::ACTION_QUIT);
-  win.SetKeyEvent(forma::input::KEY_Q, forma::window::ACTION_LOG);
 
   forma::shader::Shader shade;
   shade.VertexShader("resources/shaders/vertex.glsl");
   shade.FragmentShader("resources/shaders/frag.glsl");
   shade.CompileShader();
   shade.Use();
+
+  forma::entity::Entity ent;
+  ent.SetShader(shade.GetPtr());
 
   while (win.ShouldClose() == false) {
     win.ProcessEvents();

@@ -1,6 +1,7 @@
 #ifndef FORMA_WINDOW_WINDOW_HP
 #define FORMA_WINDOW_WINDOW_HP
 
+#include <functional>
 #include <map>
 #include <memory>
 
@@ -29,6 +30,8 @@ namespace forma {
       void SetKeyEvent(std::array<int, 4> key_info, unsigned int set_action);
       void SetKeyEvent(unsigned int key, unsigned int set_action);
       void SetKeyEvent(std::array<int, 4> key_info,
+                       std::function<void(std::shared_ptr<GLFWwindow*>)> func);
+      void SetKeyEvent(unsigned int key,
                        std::function<void(std::shared_ptr<GLFWwindow*>)> func);
       void ProcessEvents();
 

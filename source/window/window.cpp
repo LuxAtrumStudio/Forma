@@ -65,7 +65,19 @@ void forma::window::Window::SetKeyEvent(std::array<int, 4> key_info,
 
 void forma::window::Window::SetKeyEvent(unsigned int key,
                                         unsigned int set_action) {
-  key_action_[std::array<int, 4>{{(int)key, -1, -1, -1}}] = set_action;
+  key_action_[std::array<int, 4>{{static_cast<int>(key), -1, -1, -1}}] =
+      set_action;
+}
+
+void forma::window::Window::SetKeyEvent(
+    std::array<int, 4> key_info,
+    std::function<void(std::shared_ptr<GLFWwindow*>)> func) {
+  key_function_[key_info] = func;
+}
+
+void forma::window::Window::SetKeyEvent(
+    unsigned int key, std::function<void(std::shared_ptr<GLFWwindow*>)> func) {
+  key_function_[std::array<int, 4>{{static_cast<int>(key), -1, -1, -1}}] = func;
 }
 
 void forma::window::Window::ProcessEvents() {

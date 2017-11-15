@@ -86,6 +86,11 @@ void forma::shader::Shader::Use() {
              "forma::shader::Shader::Use");
   }
 }
+
+std::shared_ptr<forma::shader::Shader> forma::shader::Shader::GetPtr() {
+  return std::make_shared<forma::shader::Shader>(*this);
+}
+
 void forma::shader::Shader::Uniform1f(const std::string& name, float v0) {
   glUniform1f(glGetUniformLocation(*id_, name.c_str()), v0);
 }

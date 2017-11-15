@@ -22,6 +22,8 @@ namespace forma {
       bool IsValid();
       void Use();
 
+      std::shared_ptr<forma::shader::Shader> GetPtr();
+
       void Uniform1f(const std::string& name, float v0);
       void Uniform2f(const std::string& name, float v0, float v1);
       void Uniform3f(const std::string& name, float v0, float v1, float v2);
