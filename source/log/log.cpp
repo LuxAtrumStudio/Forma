@@ -179,3 +179,7 @@ void forma::log::SaveLog(std::string file) {
     output.close();
   }
 }
+
+void forma::log::PrintCallback(std::string entry){
+  std::cout << entry << "\n";
+}

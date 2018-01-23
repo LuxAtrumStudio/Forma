@@ -68,6 +68,8 @@ namespace forma {
     std::string GetTypeStr(unsigned int type);
     // Saves the log entries from global_logs to given file.
     void SaveLog(std::string file);
+
+    void PrintCallback(std::string entry);
   }  // namespace log
 }  // namespace forma
 #endif

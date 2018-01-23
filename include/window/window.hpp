@@ -13,6 +13,9 @@ namespace forma {
     enum WindowActions { ACTION_NONE = 0, ACTION_QUIT = 1, ACTION_LOG = 2 };
     class Window {
      public:
+      Window();
+      Window(const Window& copy);
+      ~Window();
       bool CreateWindow();
       bool DestroyWindow();
 
@@ -22,6 +25,7 @@ namespace forma {
       void MakeCurrent();
 
       void SetViewPort();
+      void SetClearColor(std::array<float, 4> color);
 
       void Update();
       void Clear();
@@ -35,6 +39,8 @@ namespace forma {
                        std::function<void(std::shared_ptr<GLFWwindow*>)> func);
       void ProcessEvents();
 
+      GLFWwindow* GetPointer();
+
      private:
       bool GenerateWindow();
       bool TerminateWindow();
@@ -44,6 +50,8 @@ namespace forma {
       bool should_close_ = false;
       const char* name_ = "Aequus";
       std::array<unsigned int, 2> size_ = {{500, 500}};
+
+      std::array<float, 4> clear_color_ = {{0.0, 0.0, 0.0, 1.0}};
 
       std::map<std::array<int, 4>, unsigned int> key_action_;
       std::map<std::array<int, 4>,

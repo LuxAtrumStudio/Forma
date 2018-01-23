@@ -9,6 +9,20 @@
 #include "log/log.hpp"
 #include "window/callback.hpp"
 
+forma::window::Window::Window() {}
+
+forma::window::Window::Window(const Window& copy) {
+  should_close_ = copy.should_close_;
+  name_ = copy.name_;
+  size_ = copy.size_;
+  clear_color_ = copy.clear_color_;
+  key_action_ = copy.key_action_;
+  key_function_ = copy.key_function_;
+  window_ = copy.window_;
+}
+
+forma::window::Window::~Window() { TerminateWindow(); }
+
 bool forma::window::Window::CreateWindow() { return GenerateWindow(); }
 
 bool forma::window::Window::DestroyWindow() { return TerminateWindow(); }
@@ -38,6 +52,10 @@ void forma::window::Window::SetViewPort() {
   }
 }
 
+void forma::window::Window::SetClearColor(std::array<float, 4> color) {
+  clear_color_ = color;
+}
+
 void forma::window::Window::Update() {
   if (window_ != NULL && *window_ != NULL) {
     if (glfwGetCurrentContext() != *window_) {
@@ -47,7 +65,11 @@ void forma::window::Window::Update() {
   }
 }
 
-void forma::window::Window::Clear() { glClear(GL_COLOR_BUFFER_BIT); }
+void forma::window::Window::Clear() {
+  glClearColor(clear_color_[0], clear_color_[1], clear_color_[2],
+               clear_color_[3]);
+  glClear(GL_COLOR_BUFFER_BIT);
+}
 
 void forma::window::Window::Display(entity::Entity* ptr) {
   if (window_ != NULL && *window_ != NULL) {
@@ -108,6 +130,12 @@ void forma::window::Window::ProcessEvents() {
   }
 }
 
+GLFWwindow* forma::window::Window::GetPointer() {
+  if (window_ != NULL) {
+    return *window_;
+  }
+}
+
 bool forma::window::Window::GenerateWindow() {
   bool good = false;
   if (window_ != NULL) {
@@ -121,6 +149,7 @@ bool forma::window::Window::GenerateWindow() {
       log::Log(log::ERROR, "Failed to generate window \"%s\"",
                "forma::window::Window::GenerateWindow", name_);
     } else {
+      glfwMakeContextCurrent(*window_);
       glfwSetFramebufferSizeCallback(*window_, FramebufferSizeCallback);
       glfwSetKeyCallback(*window_, input::KeyCallBack);
     }

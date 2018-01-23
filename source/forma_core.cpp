@@ -30,6 +30,7 @@ void forma::InitForma() {
 void forma::InitGlad() {
   if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) == false) {
     log::Log(log::FATAL, "Failed to initialize GLAD", "forma::InitGlad");
+    glad_init_ = false;
   } else {
     glad_init_ = true;
   }
