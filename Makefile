@@ -13,8 +13,8 @@ export INCLUDE_DIR= include
 
 export BASE_PATH=$(shell pwd)
 
-export COMPILER=g++
-export CXXFLAGS= -MMD -std=c++11 -w -c
+export COMPILER=clang++
+export CXXFLAGS= -MMD -std=c++17 -w -c
 
 export INSTALL_PATH=/usr/local
 
