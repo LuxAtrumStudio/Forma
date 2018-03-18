@@ -1,6 +1,7 @@
 *.o
 *.d
 *.log
+log
 *.swp
 build/*
 docs/build/*

@@ -1,7 +1,7 @@
 #include "error/error.hpp"
 
-#include "log/log.hpp"
+#include "log/logger.hpp"
 
 void forma::error::GlfwErrorHandle(int error_num, const char* error_msg) {
-  log::Log(log::ERROR, "(%i) %s", "GLFW", error_num, error_msg);
+  logging::Error("GLFW", std::to_string(error_num), "%s", error_msg);
 }

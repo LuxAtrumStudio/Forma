@@ -1,17 +1,25 @@
 #include "log/logger.hpp"
 
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
+
 #include <array>
 #include <chrono>
 #include <cstdarg>
 #include <ctime>
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <string_view>
 
 static std::string log_fmt = "[%Y-%m-%d %H:%M:%S.%e] [%f@%s] [%o] %i";
+static unsigned default_logger = forma::logging::Logger::CONSOLE;
+static std::string log_path = "", log_name = "log";
 static bool console_color = true;
+static std::ofstream daily_file, file_file;
 
-void forma::logging::Log(Logger logger, LogType type, std::string_view file,
+void forma::logging::Log(unsigned logger, LogType type, std::string_view file,
                          std::string_view scope, std::string_view fmt,
                          va_list args) {
   std::string type_string = GetLogTypeString(type, false);
@@ -69,12 +77,18 @@ void forma::logging::Log(Logger logger, LogType type, std::string_view file,
       result += log_fmt.at(i);
     }
   }
-  if (logger == CONSOLE) {
+  if ((logger & CONSOLE) == CONSOLE) {
     PrintConsoleLog(result, type);
+  }
+  if ((logger & DAILY_FILE) == DAILY_FILE) {
+    PrintDailyLog(result, type);
+  }
+  if ((logger & LOG_FILE) == LOG_FILE) {
+    PrintFileLog(result, type);
   }
 }
 
-void forma::logging::Log(Logger logger, LogType type, std::string_view file,
+void forma::logging::Log(unsigned logger, LogType type, std::string_view file,
                          std::string_view scope, std::string_view fmt, ...) {
   va_list args;
   va_start(args, fmt);
@@ -92,7 +106,95 @@ void forma::logging::Console(LogType type, std::string_view file,
                              ...) {
   va_list args;
   va_start(args, fmt);
+  Log(DAILY_FILE, type, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Daily(LogType type, std::string_view file,
+                           std::string_view scope, std::string_view fmt,
+                           va_list args) {
   Log(CONSOLE, type, file, scope, fmt, args);
+}
+void forma::logging::Daily(LogType type, std::string_view file,
+                           std::string_view scope, std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, type, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::File(LogType type, std::string_view file,
+                          std::string_view scope, std::string_view fmt,
+                          va_list args) {
+  Log(CONSOLE, type, file, scope, fmt, args);
+}
+void forma::logging::File(LogType type, std::string_view file,
+                          std::string_view scope, std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, type, file, scope, fmt, args);
+  va_end(args);
+}
+
+void forma::logging::Fatal(std::string_view file, std::string_view scope,
+                           std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, FATAL, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Error(std::string_view file, std::string_view scope,
+                           std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, ERROR, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Warning(std::string_view file, std::string_view scope,
+                             std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, WARNING, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Trace(std::string_view file, std::string_view scope,
+                           std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, TRACE, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Debug(std::string_view file, std::string_view scope,
+                           std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, DEBUG, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Success(std::string_view file, std::string_view scope,
+                             std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, SUCCESS, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Info(std::string_view file, std::string_view scope,
+                          std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, INFO, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Data(std::string_view file, std::string_view scope,
+                          std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, DATA, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Version(std::string_view file, std::string_view scope,
+                             std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, VERSION, file, scope, fmt, args);
   va_end(args);
 }
 
@@ -163,6 +265,134 @@ void forma::logging::ConsoleVersion(std::string_view file,
   va_end(args);
 }
 
+void forma::logging::DailyFatal(std::string_view file, std::string_view scope,
+                                std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(DAILY_FILE, FATAL, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::DailyError(std::string_view file, std::string_view scope,
+                                std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(DAILY_FILE, ERROR, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::DailyWarning(std::string_view file, std::string_view scope,
+                                  std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(DAILY_FILE, WARNING, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::DailyTrace(std::string_view file, std::string_view scope,
+                                std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(DAILY_FILE, TRACE, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::DailyDebug(std::string_view file, std::string_view scope,
+                                std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(DAILY_FILE, DEBUG, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::DailySuccess(std::string_view file, std::string_view scope,
+                                  std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(DAILY_FILE, SUCCESS, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::DailyInfo(std::string_view file, std::string_view scope,
+                               std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(DAILY_FILE, INFO, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::DailyData(std::string_view file, std::string_view scope,
+                               std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(DAILY_FILE, DATA, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::DailyVersion(std::string_view file, std::string_view scope,
+                                  std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(DAILY_FILE, VERSION, file, scope, fmt, args);
+  va_end(args);
+}
+
+void forma::logging::FileFatal(std::string_view file, std::string_view scope,
+                               std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, FATAL, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::FileError(std::string_view file, std::string_view scope,
+                               std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, ERROR, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::FileWarning(std::string_view file, std::string_view scope,
+                                 std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, WARNING, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::FileTrace(std::string_view file, std::string_view scope,
+                               std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, TRACE, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::FileDebug(std::string_view file, std::string_view scope,
+                               std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, DEBUG, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::FileSuccess(std::string_view file, std::string_view scope,
+                                 std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, SUCCESS, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::FileInfo(std::string_view file, std::string_view scope,
+                              std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, INFO, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::FileData(std::string_view file, std::string_view scope,
+                              std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, DATA, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::FileVersion(std::string_view file, std::string_view scope,
+                                 std::string_view fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  Log(LOG_FILE, VERSION, file, scope, fmt, args);
+  va_end(args);
+}
+
 void forma::logging::PrintConsoleLog(std::string_view msg, LogType type) {
   if (console_color == true) {
     if (type == FATAL) {
@@ -189,6 +419,31 @@ void forma::logging::PrintConsoleLog(std::string_view msg, LogType type) {
   } else {
     std::cout << msg << "\n";
   }
+}
+void forma::logging::PrintDailyLog(std::string_view msg, LogType type) {
+  if (daily_file.is_open() == false) {
+    std::array<std::string, 7> date_time = GetDateTimeString();
+    std::string file_path = log_path + date_time.at(0) + "-" + date_time.at(1) +
+                            "-" + date_time.at(2) + ".log";
+    struct stat st = {0};
+
+    if (stat(log_path.c_str(), &st) == -1) {
+      mkdir(log_path.c_str(), 0700);
+    }
+    daily_file.open(file_path);
+  }
+  daily_file << msg << std::endl;
+}
+void forma::logging::PrintFileLog(std::string_view msg, LogType type) {
+  if (file_file.is_open() == false) {
+    struct stat st = {0};
+
+    if (stat(log_path.c_str(), &st) == -1) {
+      mkdir(log_path.c_str(), 0700);
+    }
+    file_file.open(log_path + log_name);
+  }
+  file_file << msg << std::endl;
 }
 
 std::string forma::logging::GetLogTypeString(LogType type, bool abbrev) {
@@ -248,4 +503,9 @@ std::array<std::string, 7> forma::logging::GetDateTimeString() {
        std::to_string(milli_seconds.count())}};
 }
 
+void forma::logging::SetDefaultLogger(unsigned logger) {
+  default_logger = logger;
+}
 void forma::logging::SetLogFmt(std::string fmt) { log_fmt = fmt; }
+void forma::logging::SetLogPath(std::string path) { log_path = path; }
+void forma::logging::SetLogName(std::string name) { log_name = name; }

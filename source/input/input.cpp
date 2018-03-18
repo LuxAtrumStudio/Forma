@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "gl.hpp"
-#include "log/log.hpp"
+#include "log/logger.hpp"
 
 namespace forma {
   namespace input {

@@ -3,9 +3,10 @@
 #include <array>
 #include <fstream>
 #include <string>
+#include <vector>
 
 #include "gl.hpp"
-#include "log/log.hpp"
+#include "log/logger.hpp"
 
 forma::shader::Shader::Shader() {}
 
@@ -25,8 +26,9 @@ void forma::shader::Shader::VertexShader(std::string shader) {
   if (FileExists(shader)) {
     shaders_[0] = shader;
   } else {
-    log::Log(log::WARNING, "Could not open vertex shader at \"%s\"",
-             "forma::shader::Shader::VertexShader", shader.c_str());
+    logging::Warning("shader/shader.cpp",
+                     "forma::shader::Shader::VertexShader(std::string)",
+                     "Could not open vertex shader at \"%s\"", shader.c_str());
   }
 }
 
@@ -34,8 +36,10 @@ void forma::shader::Shader::FragmentShader(std::string shader) {
   if (FileExists(shader)) {
     shaders_[1] = shader;
   } else {
-    log::Log(log::WARNING, "Could not open fragment shader at \"%s\"",
-             "forma::shader::Shader::FragmentShader", shader.c_str());
+    logging::Warning("shader/shader.cpp",
+                     "forma::shader::Shader::FragmentShader(std::string)",
+                     "Could not open fragment shader at \"%s\"",
+                     shader.c_str());
   }
 }
 
@@ -54,8 +58,9 @@ void forma::shader::Shader::CompileShader() {
     std::vector<char> info_log(log_length + 1);
     glGetProgramInfoLog(*id_, log_length, NULL, &info_log[0]);
     std::string info_str(info_log.begin(), info_log.end());
-    log::Log(log::FATAL, "%s", "forma::shader::Shader::CompileShader",
-             info_str.c_str());
+    logging::Fatal("shader/shader.cpp",
+                   "forma::shader::Shader::CompileShader()", "%s",
+                   info_str.c_str());
     glDeleteProgram(*id_);
     id_ = NULL;
   }
@@ -82,8 +87,8 @@ void forma::shader::Shader::Use() {
   if (id_ != NULL) {
     glUseProgram(*id_);
   } else {
-    log::Log(log::WARNING, "Shader program not defined",
-             "forma::shader::Shader::Use");
+    logging::Warning("shader/shader.cpp", "forma::shader::Shader::Use()",
+                     "Shader program not defined");
   }
 }
 
@@ -190,13 +195,16 @@ unsigned int forma::shader::Shader::LoadShader(std::string name,
       std::vector<char> info_log(info_length + 1);
       glGetShaderInfoLog(shader_id, info_length, NULL, &info_log[0]);
       std::string info_string(info_log.begin(), info_log.end());
-      log::Log(log::FATAL, "%s", shader_name + "Shader", info_string.c_str());
+      logging::Fatal("shader/shader.cpp", shader_name, "%s",
+                     info_string.c_str());
       glDeleteShader(shader_id);
       shader_id = 0;
     }
   } else {
-    log::Log(log::ERROR, "%s shader not defined",
-             "forma::shader::Shader::LoadShader", shader_name.c_str());
+    logging::Error(
+        "shader/shader.cpp",
+        "forma::shader::Shader::LoadShader(std::string, unsigned int)",
+        "%s shader not defined", shader_name.c_str());
   }
   return shader_id;
 }

@@ -6,7 +6,7 @@
 #include "gl.hpp"
 #include "input/input.hpp"
 #include "input/key.hpp"
-#include "log/log.hpp"
+#include "log/logger.hpp"
 #include "window/callback.hpp"
 
 forma::window::Window::Window() {}
@@ -139,15 +139,17 @@ GLFWwindow* forma::window::Window::GetPointer() {
 bool forma::window::Window::GenerateWindow() {
   bool good = false;
   if (window_ != NULL) {
-    log::Log(log::WARNING, "Window already exists",
-             "forma::window::Window::GenerateWindow");
+    logging::Warning("window/window.cpp",
+                     "forma::window::Window::GenerateWindow()",
+                     "Window already exists");
     good = true;
   } else {
     window_ = std::make_shared<GLFWwindow*>(
         glfwCreateWindow(size_[0], size_[1], name_, NULL, NULL));
     if (window_ == NULL || *window_ == NULL) {
-      log::Log(log::ERROR, "Failed to generate window \"%s\"",
-               "forma::window::Window::GenerateWindow", name_);
+      logging::Error("window/window.cpp",
+                     "forma::window::Window::GenerateWindow()",
+                     "Failed to generate window \"%s\"", name_);
     } else {
       glfwMakeContextCurrent(*window_);
       glfwSetFramebufferSizeCallback(*window_, FramebufferSizeCallback);
@@ -170,8 +172,9 @@ bool forma::window::Window::TerminateWindow() {
 void forma::window::Window::RunAction(unsigned int action) {
   switch (action) {
     case ACTION_LOG:
-      log::Log(log::TRACE, "Log call from \"%s\"",
-               "forma::window::Window::RunAction", name_);
+      logging::Trace("window/window.cpp",
+                     "forma::window::Window::RunAction(unsigned int)",
+                     "Log call from \"%s\"", name_);
       break;
     case ACTION_QUIT:
       SetShouldClose(true);

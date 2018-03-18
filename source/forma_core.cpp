@@ -2,7 +2,7 @@
 
 #include "error/error.hpp"
 #include "gl.hpp"
-#include "log/log.hpp"
+#include "log/logger.hpp"
 #include "window/window.hpp"
 
 namespace forma {
@@ -10,10 +10,11 @@ namespace forma {
 }  // namespace forma
 
 void forma::InitForma() {
-  log::Log(log::VERSION, "Forma verison: %i.%i", "forma::InitForma",
-           FORMA_VERSION_MAJOR, FORMA_VERSION_MINOR);
-  log::Log(log::VERSION, "OpenGL version: %i.%i", "forma::InitForma",
-           GL_VERSION_MAJOR, GL_VERSION_MINOR);
+  logging::Version("forma_core.cpp", "forma::InitForma()",
+                   "Forma version: %i.%i", FORMA_VERSION_MAJOR,
+                   FORMA_VERSION_MINOR);
+  logging::Version("forma_core.cpp", "forma::InitForma()",
+                   "OpenGL version: %i.%i", GL_VERSION_MAJOR, GL_VERSION_MINOR);
   InitGlfw();
   window::Window win;
   win.CreateWindow();
@@ -23,13 +24,15 @@ void forma::InitForma() {
   if (glfw_init_ == true && glad_init_ == true) {
     forma_init_ = true;
   } else {
-    log::Log(log::FATAL, "Failed to initialize Forma", "forma::InitForma");
+    logging::Fatal("forma_core.cpp", "forma::InitForma()",
+                   "Failed to initialize Forma");
   }
 }
 
 void forma::InitGlad() {
   if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress) == false) {
-    log::Log(log::FATAL, "Failed to initialize GLAD", "forma::InitGlad");
+    logging::Fatal("forma_core.cpp", "forma::InitGlad()",
+                   "Failed to initialize GLAD");
     glad_init_ = false;
   } else {
     glad_init_ = true;
@@ -39,13 +42,15 @@ void forma::InitGlad() {
 void forma::InitGlfw() {
   glfwSetErrorCallback(error::GlfwErrorHandle);
   if (glfwInit() == false) {
-    log::Log(log::FATAL, "Failed to initialize GLFW", "forma::InitGlfw");
+    logging::Fatal("forma_core.cpp", "forma::InitGlfw()",
+                   "Failed to initialize GLFW");
   } else {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, GL_VERSION_MAJOR);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, GL_VERSION_MINOR);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    log::Log(log::VERSION, "GLFW verison: %i.%i.%i", "forma::InitGlfw",
-             GLFW_VERSION_MAJOR, GLFW_VERSION_MINOR, GLFW_VERSION_REVISION);
+    logging::Version("forma_core.cpp", "forma::InitGlfw()",
+                     "GLFW version: %i.%i.%i", GLFW_VERSION_MAJOR,
+                     GLFW_VERSION_MINOR, GLFW_VERSION_REVISION);
     glfw_init_ = true;
   }
 }

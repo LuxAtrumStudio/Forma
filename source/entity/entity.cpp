@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "gl.hpp"
-#include "log/log.hpp"
+#include "log/logger.hpp"
 #include "shader/shader.hpp"
 
 forma::entity::Entity::Entity() {}
@@ -47,7 +47,10 @@ void forma::entity::Entity::SetVertexAttrubute(std::string attr,
     }
   }
   if (exists == false) {
-    log::Log(log::ERROR, "Vertex Attribute does not exist!");
+    logging::Error("entity/entity.cpp",
+                   "forma::entity::Entity::SetVertexAttrubute(std::string, "
+                   "std::vector<float>)",
+                   "Vertex Attribute does not exist!");
   }
 }
 
@@ -69,8 +72,9 @@ void forma::entity::Entity::CompileEntity() { GenerateObject(); }
 void forma::entity::Entity::GenerateObject() {
   glGenVertexArrays(1, &vao_);
   if (vao_ == GL_INVALID_VALUE) {
-    log::Log(log::WARNING, "Failed to generate vertex arrays",
-             "forma::entity::Entity::GenerateObject");
+    logging::Warning("entity/entity.cpp",
+                     "forma::entity::Entity::GenerateObject()",
+                     "Failed to generate vertex arrays");
   }
   glGenBuffers(1, &vbo_);
   glGenBuffers(1, &ebo_);
