@@ -23,27 +23,19 @@ int main() {
 
   forma::entity::Entity ent;
   ent.SetVerticies(
-      {1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, -1.0, 0.0});
+      {0.5, 0.5, 0.0, 0.5, -0.5, 0.0, -0.5, -0.5, 0.0, -0.5, 0.5, 0.0});
+  ent.SetVertexAttribute(
+      "color", {1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0}, 1,
+      3);
   ent.SetIndices({0, 1, 3, 1, 2, 3});
   ent.SetShader(shad.GetPtr());
   ent.CompileEntity();
-
-  forma::entity::Entity en;
-  // en.SetVerticies(
-  //     {0.0, 1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 0.0, -1.0, 1.0, 0.0});
-  en.SetVerticies(
-      {0.5, 0.5, 0.0, 0.5, -0.5, 0.0, -0.5, -0.5, 0.0, -0.5, 0.5, 0.0});
-  en.SetIndices({0, 1, 3, 1, 2, 3});
-  en.SetShader(shad.GetPtr());
-  en.SetDisplayMode(forma::entity::LINE_LOOP);
-  en.CompileEntity();
 
   while (win.ShouldClose() == false) {
     win.ProcessEvents();
     win.Clear();
 
-    // win.Display(&ent);
-    win.Display(&en);
+    win.Display(&ent);
 
     win.Update();
     forma::input::PollEvents();

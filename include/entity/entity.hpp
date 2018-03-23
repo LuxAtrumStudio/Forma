@@ -30,23 +30,31 @@ namespace forma {
       void SetDisplayMode(EntityDisplayMode mode);
       void SetShader(std::shared_ptr<forma::shader::Shader> shader);
       void SetVerticies(std::vector<float> vertices);
-      void SetVertexAttrubute(std::string attr, std::vector<float> data);
-      void SetIndices(std::vector<unsigned int> indices);
+      void SetVertexAttribute(std::string attr, std::vector<float> data,
+                              unsigned ptr=0, unsigned size=3);
+      void RemoveVertexAttribute(std::string attr);
+      void SetIndices(std::vector<unsigned> indices);
 
       void Display();
 
       void CompileEntity();
 
      private:
+      struct VertexAttribute {
+        unsigned int ptr, size;
+        std::vector<float> data;
+      };
+
       void GenerateObject();
 
       EntityDisplayMode display_mode_ = TRIANGLES;
 
       std::shared_ptr<forma::shader::Shader> entity_shader_;
       std::vector<float> vertices_;
-      std::vector<std::pair<std::string, std::vector<float>>>
+      std::vector<
+          std::tuple<std::string, unsigned, unsigned, std::vector<float>>>
           vertex_attributes_;
-      std::vector<unsigned int> indices_;
+      std::vector<unsigned> indices_;
 
       unsigned int vbo_, vao_, ebo_;
     };
