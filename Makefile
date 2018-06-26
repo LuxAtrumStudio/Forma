@@ -15,7 +15,7 @@ export BASE_PATH=$(shell pwd)
 export IGNORE=-Wno-gnu-zero-variadic-macro-arguments -Wno-ignored-optimization-argument
 export COMPILER= clang++
 export CXXFLAGS= -MMD -std=c++17 -c -fPIC -Wall -Wextra -Wpedantic $(IGNORE)
-export LINK= -lGL $(BASE_PATH)/$(BUILD_DIR)/glfw/lib/libglfw3.a -lrt -lm -lX11 -lpthread -lxcb -lXau -lXdmcp
+export LINK= -lGL $(BASE_PATH)/$(BUILD_DIR)/glfw/lib/libglfw3.a -lrt -lm -lX11 -lpthread -lxcb -lXau -lXdmcp -ldl
 export INCLUDE= -I$(BASE_PATH)/$(EXTERNAL_DIR)/estl -I$(BASE_PATH)/$(BUILD_DIR)/glfw/include
 
 export INSTALL_PATH=/usr/local
