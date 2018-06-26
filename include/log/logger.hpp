@@ -60,6 +60,7 @@ namespace forma {
               std::string_view fmt, ...);
     void Version(std::string_view file, std::string_view scope,
                  std::string_view fmt, ...);
+    void Dev(std::string fmt, ...);
 
     void ConsoleFatal(std::string_view file, std::string_view scope,
                       std::string_view fmt, ...);

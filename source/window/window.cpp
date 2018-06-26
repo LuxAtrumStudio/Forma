@@ -106,6 +106,7 @@ void forma::window::Window::ProcessEvents() {
   std::vector<std::array<int, 4>> key_inputs = input::GetKeyData(*window_);
   for (std::vector<std::array<int, 4>>::iterator it = key_inputs.begin();
        it != key_inputs.end(); ++it) {
+    bool matched = false;
     for (std::map<std::array<int, 4>, unsigned int>::iterator action =
              key_action_.begin();
          action != key_action_.end(); ++action) {
@@ -114,6 +115,7 @@ void forma::window::Window::ProcessEvents() {
           (action->first[2] == (*it)[2] || action->first[2] == -1) &&
           (action->first[3] == (*it)[3] || action->first[3] == -1)) {
         RunAction(action->second);
+        matched = true;
       }
     }
     for (std::map<std::array<int, 4>,
@@ -125,15 +127,31 @@ void forma::window::Window::ProcessEvents() {
           (action->first[2] == (*it)[2] || action->first[2] == -1) &&
           (action->first[3] == (*it)[3] || action->first[3] == -1)) {
         action->second(window_);
+        matched = true;
       }
     }
+    if(matched == true){
+      key_inputs.erase(it);
+      it--;
+    }
   }
+  if(key_inputs.size() != 0){
+    input::PrependKeyData(*window_, key_inputs);
+  }
+}
+
+std::array<int, 4> forma::window::Window::GetKey(){
+  return input::GetNextKey(*window_);
+}
+int forma::window::Window::GetKeyState(unsigned int key){
+  return input::GetKeyState(*window_, key);
 }
 
 GLFWwindow* forma::window::Window::GetPointer() {
   if (window_ != NULL) {
     return *window_;
   }
+  return NULL;
 }
 
 bool forma::window::Window::GenerateWindow() {
@@ -174,7 +192,7 @@ void forma::window::Window::RunAction(unsigned int action) {
     case ACTION_LOG:
       logging::Trace("window/window.cpp",
                      "forma::window::Window::RunAction(unsigned int)",
-                     "Log call from \"%s\"", name_);
+                     "Log call from \"%s\".", name_);
       break;
     case ACTION_QUIT:
       SetShouldClose(true);

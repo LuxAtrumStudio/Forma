@@ -78,6 +78,11 @@ namespace forma {
       KEY_PRINT_SCREEN = 283,
       KEY_PAUSE = 284
     };
+    enum KeyState{
+      KEY_RELEASE = 0,
+      KEY_PRESS = 1,
+      KEY_REPEAT = 2
+    };
   }  // namespace input
 }  // namespace forma
 

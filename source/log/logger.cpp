@@ -19,6 +19,15 @@ static std::string log_path = "", log_name = "log";
 static bool console_color = true;
 static std::ofstream daily_file, file_file;
 
+std::string to_xstring(const char* fmt, ...) {
+  char* res = static_cast<char*>(malloc(sizeof(char) * 255));
+  va_list args;
+  va_start(args, fmt);
+  const int len = std::vsnprintf(res, 255, fmt, args);
+  va_end(args);
+  return std::string(res, len);
+}
+
 void forma::logging::Log(unsigned logger, LogType type, std::string_view file,
                          std::string_view scope, std::string_view fmt,
                          va_list args) {
@@ -195,6 +204,12 @@ void forma::logging::Version(std::string_view file, std::string_view scope,
   va_list args;
   va_start(args, fmt);
   Log(default_logger, VERSION, file, scope, fmt, args);
+  va_end(args);
+}
+void forma::logging::Dev(std::string fmt, ...){
+  va_list args;
+  va_start(args, fmt);
+  Log(default_logger, DEBUG, "", "", fmt, args);
   va_end(args);
 }
 
@@ -496,11 +511,13 @@ std::array<std::string, 7> forma::logging::GetDateTimeString() {
   std::chrono::duration milli_seconds =
       std::chrono::duration_cast<std::chrono::milliseconds>(diff);
   return std::array<std::string, 7>{
-      {std::to_string(date_time.tm_year + 1900),
-       std::to_string(date_time.tm_mon), std::to_string(date_time.tm_mday),
-       std::to_string(date_time.tm_hour), std::to_string(date_time.tm_min),
-       std::to_string(date_time.tm_sec),
-       std::to_string(milli_seconds.count())}};
+      {to_xstring("%04u", date_time.tm_year + 1900),
+       to_xstring("%02u", date_time.tm_mon),
+       to_xstring("%02u", date_time.tm_mday),
+       to_xstring("%02u", date_time.tm_hour),
+       to_xstring("%02u", date_time.tm_min),
+       to_xstring("%02u", date_time.tm_sec),
+       to_xstring("%03u", milli_seconds.count())}};
 }
 
 void forma::logging::SetDefaultLogger(unsigned logger) {

@@ -38,6 +38,8 @@ namespace forma {
       void SetKeyEvent(unsigned int key,
                        std::function<void(std::shared_ptr<GLFWwindow*>)> func);
       void ProcessEvents();
+      std::array<int, 4> GetKey();
+      int GetKeyState(unsigned int key);
 
       GLFWwindow* GetPointer();
 
@@ -48,7 +50,7 @@ namespace forma {
       void RunAction(unsigned int action);
 
       bool should_close_ = false;
-      const char* name_ = "Aequus";
+      const char* name_ = "Forma";
       std::array<unsigned int, 2> size_ = {{500, 500}};
 
       std::array<float, 4> clear_color_ = {{0.0, 0.0, 0.0, 1.0}};
