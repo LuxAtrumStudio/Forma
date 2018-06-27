@@ -16,6 +16,8 @@ namespace forma {
   bool IsInitForma();
   bool IsInitGlad();
   bool IsInitGlfw();
+
+  void FpsCheck();
 } // namespace forma
 
 #endif  // FORMA_CORE_HPP_

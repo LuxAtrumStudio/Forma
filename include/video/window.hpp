@@ -25,6 +25,9 @@ namespace forma {
 
         void HandleEvents();
 
+        void Update() const;
+        void Clear(float r, float g, float b, float a) const;
+
         std::string GetName() const;
         uint16_t GetWidth() const;
         uint16_t GetHeight() const;

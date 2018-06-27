@@ -6,6 +6,8 @@
 
 namespace forma {
   static bool forma_init_ = false, glfw_init_ = false, glad_init_ = false;
+  static uint16_t frames_ = 0;
+  static double start_time_ = 0.0;
 }  // namespace forma
 
 void GlfwErrorHandle(int error_num, const char* error_msg) {
@@ -71,3 +73,20 @@ bool forma::TermGlfw() {
 bool forma::IsInitForma() { return forma_init_; }
 bool forma::IsInitGlad() { return glad_init_; }
 bool forma::IsInitGlfw() { return glfw_init_; }
+
+void forma::FpsCheck() {
+  frames_++;
+  if (start_time_ == 0.0) {
+    start_time_ = glfwGetTime();
+  } else {
+    double current_time = glfwGetTime();
+    if (current_time - start_time_ >= 1.0) {
+      double diff = static_cast<double>(frames_) / (current_time - start_time_);
+      if(diff < 30.0){
+        estl::logger::Warning("Low FPS: %.3f", diff);
+      }
+      frames_ = 0;
+      start_time_ = current_time;
+    }
+  }
+}

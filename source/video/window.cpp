@@ -60,7 +60,6 @@ bool forma::video::Window::Destroy() {
     ptr_ = nullptr;
     return true;
   } else {
-    estl::logger::Warning("Window \"%s\" already destroyed", name_.c_str());
     return false;
   }
 }
@@ -82,6 +81,20 @@ void forma::video::Window::MakeCurrent() const{
   }
 }
 
+void forma::video::Window::HandleEvents(){
+}
+
+void forma::video::Window::Update() const {
+  if(ptr_ != nullptr && *ptr_ != nullptr){
+    glfwSwapBuffers(*ptr_);
+  }
+}
+
+void forma::video::Window::Clear(float r, float g, float b, float a) const {
+  glClearColor(r, g, b, a);
+  glClear(GL_COLOR_BUFFER_BIT);
+}
+
 std::string forma::video::Window::GetName() const{
   return name_;
 }
@@ -92,5 +105,3 @@ uint16_t forma::video::Window::GetHeight() const{
   return height_;
 }
 
-void forma::video::Window::HandleEvents(){
-}
