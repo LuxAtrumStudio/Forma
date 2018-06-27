@@ -1,0 +1,157 @@
+[
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-I/home/arden/Programming/cpp/forma/include",
+            "-I/home/arden/Programming/cpp/forma/external/estl",
+            "-I/home/arden/Programming/cpp/forma/build/glfw/include",
+            "-std=c++17",
+            "-fPIC",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Wno-gnu-zero-variadic-macro-arguments",
+            "-Wno-ignored-optimization-argument",
+            "-DDEV",
+            "-o",
+            "/home/arden/Programming/cpp/forma/build/source/./core.o",
+            "core.cpp"
+        ],
+        "directory": "/home/arden/Programming/cpp/forma/source",
+        "file": "core.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-I/home/arden/Programming/cpp/forma/include",
+            "-I/home/arden/Programming/cpp/forma/external/estl",
+            "-I/home/arden/Programming/cpp/forma/build/glfw/include",
+            "-std=c++17",
+            "-fPIC",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Wno-gnu-zero-variadic-macro-arguments",
+            "-Wno-ignored-optimization-argument",
+            "-DDEV",
+            "-o",
+            "/home/arden/Programming/cpp/forma/build/source/./main.o",
+            "main.cpp"
+        ],
+        "directory": "/home/arden/Programming/cpp/forma/source",
+        "file": "main.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-I/home/arden/Programming/cpp/forma/include",
+            "-I/home/arden/Programming/cpp/forma/external/estl",
+            "-I/home/arden/Programming/cpp/forma/build/glfw/include",
+            "-I/home/arden/Programming/cpp/forma/external/googletest/googletest/include",
+            "-std=c++17",
+            "-fPIC",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Wno-gnu-zero-variadic-macro-arguments",
+            "-Wno-ignored-optimization-argument",
+            "-DDEV",
+            "-o",
+            "/home/arden/Programming/cpp/forma/build/test/./tmp.o",
+            "tmp.cpp"
+        ],
+        "directory": "/home/arden/Programming/cpp/forma/test",
+        "file": "tmp.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-I/home/arden/Programming/cpp/forma/include",
+            "-I/home/arden/Programming/cpp/forma/external/estl",
+            "-I/home/arden/Programming/cpp/forma/build/glfw/include",
+            "-std=c++17",
+            "-fPIC",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Wno-gnu-zero-variadic-macro-arguments",
+            "-Wno-ignored-optimization-argument",
+            "-DDEV",
+            "-o",
+            "/home/arden/Programming/cpp/forma/build/source/./video/window.o",
+            "video/window.cpp"
+        ],
+        "directory": "/home/arden/Programming/cpp/forma/source",
+        "file": "video/window.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-I/home/arden/Programming/cpp/forma/include",
+            "-I/home/arden/Programming/cpp/forma/external/estl",
+            "-I/home/arden/Programming/cpp/forma/build/glfw/include",
+            "-std=c++17",
+            "-fPIC",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Wno-gnu-zero-variadic-macro-arguments",
+            "-Wno-ignored-optimization-argument",
+            "-DDEV",
+            "-o",
+            "/home/arden/Programming/cpp/forma/build/source/./video/callback.o",
+            "video/callback.cpp"
+        ],
+        "directory": "/home/arden/Programming/cpp/forma/source",
+        "file": "video/callback.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-I/home/arden/Programming/cpp/forma/include",
+            "-I/home/arden/Programming/cpp/forma/external/estl",
+            "-I/home/arden/Programming/cpp/forma/build/glfw/include",
+            "-std=c++17",
+            "-fPIC",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Wno-gnu-zero-variadic-macro-arguments",
+            "-Wno-ignored-optimization-argument",
+            "-DDEV",
+            "-o",
+            "/home/arden/Programming/cpp/forma/build/source/./gl/glad.o",
+            "gl/glad.cpp"
+        ],
+        "directory": "/home/arden/Programming/cpp/forma/source",
+        "file": "gl/glad.cpp"
+    },
+    {
+        "arguments": [
+            "c++",
+            "-c",
+            "-I/home/arden/Programming/cpp/forma/include",
+            "-I/home/arden/Programming/cpp/forma/external/estl",
+            "-I/home/arden/Programming/cpp/forma/build/glfw/include",
+            "-std=c++17",
+            "-fPIC",
+            "-Wall",
+            "-Wextra",
+            "-Wpedantic",
+            "-Wno-gnu-zero-variadic-macro-arguments",
+            "-Wno-ignored-optimization-argument",
+            "-DDEV",
+            "-o",
+            "/home/arden/Programming/cpp/forma/build/source/./input/key.o",
+            "input/key.cpp"
+        ],
+        "directory": "/home/arden/Programming/cpp/forma/source",
+        "file": "input/key.cpp"
+    }
+]

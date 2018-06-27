@@ -55,7 +55,12 @@ printf "%b%*s%b: %s\n" "$(TARGET_COLOR)" 14 "$(1)" "$(NO_COLOR)" "$(2)"
 endef
 
 .PHONY : all
-all: external source test
+all: dev
+
+dev: CXXFLAGS += -DDEV
+dev: external source test
+
+release: external source test
 
 .PHONY : clean
 clean: clean-source clean-test

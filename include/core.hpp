@@ -13,9 +13,9 @@ namespace forma {
   bool TermGlad();
   bool TermGlfw();
 
-  void FormaVersion(int& major, int& minor);
-  void GLFWVersion(int& major, int& minor);
-  void OpenGLVersion(int& major, int& minor);
+  bool IsInitForma();
+  bool IsInitGlad();
+  bool IsInitGlfw();
 } // namespace forma
 
 #endif  // FORMA_CORE_HPP_
