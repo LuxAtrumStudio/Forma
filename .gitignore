@@ -1,9 +1,7 @@
-*.o
-*.d
-*.log
-log
-*.swp
-build/*
-docs/build/*
-forma
-unit-test
+
+# Created by https://www.gitignore.io/api/cpp
+# Edit at https://www.gitignore.io/?templates=cpp
+
+#!! ERROR: cpp is undefined. Use list command to see defined gitignore types !!#
+
+# End of https://www.gitignore.io/api/cpp
