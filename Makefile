@@ -9,7 +9,7 @@ CC=clang
 CCIGNORE=
 CXXIGNORE=
 CCFLAGS=-fPIC -Wall -Wpedantic --static
-CXXFLAGS=-std=c++17 -fPIC -Wall -Wpedantic --static
+CXXFLAGS=-std=c++17 -fPIC -Wall -Wpedantic --static -DDEV
 LINK=
 SOURCE=src
 INCLUDE_DIR=include

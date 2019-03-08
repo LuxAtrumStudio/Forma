@@ -1,6 +1,9 @@
 #ifndef FORMA_LOGGER_HPP_
 #define FORMA_LOGGER_HPP_
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wgnu-zero-variadic-macro-arguments"
+
 #include <array>
 #include <cstdarg>
 #include <ctime>
@@ -8,7 +11,33 @@
 
 namespace forma {
   namespace log {
-#define Default() Logger::Get()->GetLogger()
+#define Default() Logger::get()
+#define Console() Logger::get()->get_logger(forma::log::Logger::CONSOLE)
+#define OutFile() Logger::get()->get_logger(forma::log::Logger::OUT_FILE)
+#define fatal(msg, ...)                                                     \
+  Logger::get()->_log(forma::log::FATAL, msg, __FILE__, __func__, __LINE__, \
+                      ##__VA_ARGS__)
+#define error(msg, ...)                                                     \
+  Logger::get()->_log(forma::log::ERROR, msg, __FILE__, __func__, __LINE__, \
+                      ##__VA_ARGS__)
+#define warning(msg, ...)                                                     \
+  Logger::get()->_log(forma::log::WARNING, msg, __FILE__, __func__, __LINE__, \
+                      ##__VA_ARGS__)
+#define success(msg, ...)                                                     \
+  Logger::get()->_log(forma::log::SUCCESS, msg, __FILE__, __func__, __LINE__, \
+                      ##__VA_ARGS__)
+#define debug(msg, ...)                                                     \
+  Logger::get()->_log(forma::log::DEBUG, msg, __FILE__, __func__, __LINE__, \
+                      ##__VA_ARGS__)
+#define trace(msg, ...)                                                     \
+  Logger::get()->_log(forma::log::TRACE, msg, __FILE__, __func__, __LINE__, \
+                      ##__VA_ARGS__)
+#define info(msg, ...)                                                     \
+  Logger::get()->_log(forma::log::INFO, msg, __FILE__, __func__, __LINE__, \
+                      ##__VA_ARGS__)
+#define version(msg, ...)                                                     \
+  Logger::get()->_log(forma::log::VERSION, msg, __FILE__, __func__, __LINE__, \
+                      ##__VA_ARGS__)
 
     enum LogType {
       FATAL = (1u << 0),
@@ -149,19 +178,23 @@ namespace forma {
         val ? activation_mask_ |= VERSION : activation_mask_ &= ~VERSION;
       }
       inline void set_activation(unsigned mask) { activation_mask_ = mask; }
+      inline void set_activation_mask(LogType type, bool val) {
+        val ? activation_mask_ |= type : activation_mask_ &= ~type;
+      }
 
       inline void set_line_zero_pad(bool val) { line_pad_zero_ = val; }
       inline void set_file_pad(unsigned val) { padding_[0] = val; }
       inline void set_func_pad(unsigned val) { padding_[1] = val; }
       inline void set_line_pad(unsigned val) { padding_[2] = val; }
       inline void set_body_pad(unsigned val) { padding_[3] = val; }
+      inline void set_pad(unsigned id, unsigned val) { padding_[id] = val; }
 
      protected:
       virtual void handle_log(const LogType&, const std::string&) {}
       unsigned activation_mask_ =
           FATAL | ERROR | WARNING | SUCCESS | DEBUG | TRACE | INFO | VERSION;
       bool line_pad_zero_ = false;
-      std::array<unsigned, 4> padding_ = {{0, 0, 3, 0}};
+      std::array<unsigned, 4> padding_ = {{0, 0, 0, 0}};
       std::array<std::string, 8> log_fmt_ = {
           {"[__TYPE__] <__DATE_TIME__> (__FILE__:__FUNC__:__LINE__) __BODY__",
            "[__TYPE__] <__DATE_TIME__> (__FILE__:__FUNC__:__LINE__) __BODY__",
@@ -327,11 +360,62 @@ namespace forma {
         val ? logger_ |= OUT_FILE : logger_ &= ~OUT_FILE;
       }
 
+      inline void format(LogType type, std::string fmt) {
+        if ((logger_ & CONSOLE) == CONSOLE)
+          ConsoleLogger::get()->format(type, fmt);
+      }
+      inline void format_all(std::string fmt) {
+        if ((logger_ & CONSOLE) == CONSOLE)
+          ConsoleLogger::get()->format_all(fmt);
+      }
+
+      inline void format_fatal(std::string fmt) { format(FATAL, fmt); }
+      inline void format_error(std::string fmt) { format(ERROR, fmt); }
+      inline void format_warning(std::string fmt) { format(WARNING, fmt); }
+      inline void format_success(std::string fmt) { format(SUCCESS, fmt); }
+      inline void format_debug(std::string fmt) { format(DEBUG, fmt); }
+      inline void format_trace(std::string fmt) { format(TRACE, fmt); }
+      inline void format_info(std::string fmt) { format(INFO, fmt); }
+      inline void format_version(std::string fmt) { format(VERSION, fmt); }
+
+      inline void set_activation_mask(LogType type, bool val) {
+        if ((logger_ & CONSOLE) == CONSOLE)
+          ConsoleLogger::get()->set_activation_mask(type, val);
+      }
+      inline void set_activation(unsigned mask) {
+        if ((logger_ & CONSOLE) == CONSOLE)
+          ConsoleLogger::get()->set_activation(mask);
+      }
+
+      inline void set_fatal(bool val) { set_activation_mask(FATAL, val); }
+      inline void set_error(bool val) { set_activation_mask(ERROR, val); }
+      inline void set_warning(bool val) { set_activation_mask(WARNING, val); }
+      inline void set_success(bool val) { set_activation_mask(SUCCESS, val); }
+      inline void set_debug(bool val) { set_activation_mask(DEBUG, val); }
+      inline void set_trace(bool val) { set_activation_mask(TRACE, val); }
+      inline void set_info(bool val) { set_activation_mask(INFO, val); }
+      inline void set_version(bool val) { set_activation_mask(VERSION, val); }
+
+      inline void set_line_zero_pad(bool val) {
+        if ((logger_ & CONSOLE) == CONSOLE)
+          ConsoleLogger::get()->set_line_zero_pad(val);
+      }
+      inline void set_pad(unsigned id, unsigned val) {
+        if ((logger_ & CONSOLE) == CONSOLE)
+          ConsoleLogger::get()->set_pad(id, val);
+      }
+      inline void set_file_pad(unsigned val) { set_pad(0, val); }
+      inline void set_func_pad(unsigned val) { set_pad(1, val); }
+      inline void set_line_pad(unsigned val) { set_pad(2, val); }
+      inline void set_body_pad(unsigned val) { set_pad(3, val); }
+
      protected:
       unsigned logger_ = CONSOLE | OUT_FILE;
     };
 
   }  // namespace log
 }  // namespace forma
+
+#pragma clang diagnostic pop
 
 #endif  // FORMA_LOGGER_HPP_
