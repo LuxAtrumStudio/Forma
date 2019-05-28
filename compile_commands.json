@@ -6,8 +6,18 @@
 },
 {
   "directory": "/home/arden/programming/cpp/forma/build",
-  "command": "clang++   -I/home/arden/programming/cpp/forma/src  -DDEV   -std=gnu++17 -o CMakeFiles/forma.dir/src/window.cpp.o -c /home/arden/programming/cpp/forma/src/window.cpp",
-  "file": "/home/arden/programming/cpp/forma/src/window.cpp"
+  "command": "clang++   -I/home/arden/programming/cpp/forma/src  -DDEV   -std=gnu++17 -o CMakeFiles/forma.dir/src/glm/detail/glm.cpp.o -c /home/arden/programming/cpp/forma/src/glm/detail/glm.cpp",
+  "file": "/home/arden/programming/cpp/forma/src/glm/detail/glm.cpp"
+},
+{
+  "directory": "/home/arden/programming/cpp/forma/build",
+  "command": "clang++   -I/home/arden/programming/cpp/forma/src  -DDEV   -std=gnu++17 -o CMakeFiles/forma.dir/src/window/context.cpp.o -c /home/arden/programming/cpp/forma/src/window/context.cpp",
+  "file": "/home/arden/programming/cpp/forma/src/window/context.cpp"
+},
+{
+  "directory": "/home/arden/programming/cpp/forma/build",
+  "command": "clang++   -I/home/arden/programming/cpp/forma/src  -DDEV   -std=gnu++17 -o CMakeFiles/forma.dir/src/window/window_class.cpp.o -c /home/arden/programming/cpp/forma/src/window/window_class.cpp",
+  "file": "/home/arden/programming/cpp/forma/src/window/window_class.cpp"
 },
 {
   "directory": "/home/arden/programming/cpp/forma/build/examples",

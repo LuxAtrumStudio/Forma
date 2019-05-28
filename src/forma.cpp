@@ -19,6 +19,11 @@ bool forma::init() {
   return true;
 }
 
+bool forma::terminate(){
+  glfwTerminate();
+  return true;
+}
+
 void forma::glfw_error_callback(int error, const char* description){
   forma::log::Logger::get()->_log(forma::log::ERROR, description, "GLFW", "", error);
 }

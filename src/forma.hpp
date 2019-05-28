@@ -10,6 +10,7 @@
 namespace forma {
 
   bool init();
+  bool terminate();
 
   inline unsigned get_version_major() { return FORMA_VERSION_MAJOR; }
   inline unsigned get_version_minor() { return FORMA_VERSION_MINOR; }
