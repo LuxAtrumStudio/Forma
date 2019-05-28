@@ -413,6 +413,7 @@ namespace forma {
       unsigned logger_ = CONSOLE | OUT_FILE;
     };
 
+
   }  // namespace log
 }  // namespace forma
 

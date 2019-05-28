@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/arden/programming/cpp/forma/build",
+  "command": "clang++   -I/home/arden/programming/cpp/forma/src  -DDEV   -std=gnu++17 -o CMakeFiles/forma.dir/src/forma.cpp.o -c /home/arden/programming/cpp/forma/src/forma.cpp",
+  "file": "/home/arden/programming/cpp/forma/src/forma.cpp"
+},
+{
+  "directory": "/home/arden/programming/cpp/forma/build",
+  "command": "clang++   -I/home/arden/programming/cpp/forma/src  -DDEV   -std=gnu++17 -o CMakeFiles/forma.dir/src/window.cpp.o -c /home/arden/programming/cpp/forma/src/window.cpp",
+  "file": "/home/arden/programming/cpp/forma/src/window.cpp"
+},
+{
+  "directory": "/home/arden/programming/cpp/forma/build/examples",
+  "command": "clang++  -DGLFW_DLL -I/home/arden/programming/cpp/forma/src  -DDEV   -std=gnu++17 -o CMakeFiles/ex0.dir/ex0/main.cpp.o -c /home/arden/programming/cpp/forma/examples/ex0/main.cpp",
+  "file": "/home/arden/programming/cpp/forma/examples/ex0/main.cpp"
+}
+]

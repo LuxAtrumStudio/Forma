@@ -1,0 +1,2 @@
+/sbin/ar qc libforma.a  CMakeFiles/forma.dir/src/forma.cpp.o CMakeFiles/forma.dir/src/window.cpp.o
+/sbin/ranlib libforma.a

@@ -1,0 +1,1 @@
+clang++  -DDEV  -rdynamic CMakeFiles/ex0.dir/ex0/main.cpp.o  -o ex0 ../libforma.a /usr/lib/libglfw.so.3.3 -ldl 

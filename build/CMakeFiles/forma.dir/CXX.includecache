@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/arden/programming/cpp/forma/src/forma.cpp
+forma.hpp
+/home/arden/programming/cpp/forma/src/forma.hpp
+GLFW/glfw3.h
+-
+logger.hpp
+/home/arden/programming/cpp/forma/src/logger.hpp
+
+/home/arden/programming/cpp/forma/src/forma.hpp
+logger.hpp
+/home/arden/programming/cpp/forma/src/logger.hpp
+window.hpp
+/home/arden/programming/cpp/forma/src/window.hpp
+
+/home/arden/programming/cpp/forma/src/logger.hpp
+array
+-
+cstdarg
+-
+ctime
+-
+string
+-
+
+/home/arden/programming/cpp/forma/src/window.hpp
+string
+-
+GLFW/glfw3.h
+-
+

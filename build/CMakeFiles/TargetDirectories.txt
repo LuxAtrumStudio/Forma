@@ -1,0 +1,6 @@
+/home/arden/programming/cpp/forma/build/CMakeFiles/rebuild_cache.dir
+/home/arden/programming/cpp/forma/build/CMakeFiles/forma.dir
+/home/arden/programming/cpp/forma/build/CMakeFiles/edit_cache.dir
+/home/arden/programming/cpp/forma/build/examples/CMakeFiles/rebuild_cache.dir
+/home/arden/programming/cpp/forma/build/examples/CMakeFiles/ex0.dir
+/home/arden/programming/cpp/forma/build/examples/CMakeFiles/edit_cache.dir
