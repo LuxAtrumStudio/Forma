@@ -6,6 +6,7 @@
 
 #include "../logger.hpp"
 #include "context.hpp"
+#include "glad.hpp"
 
 forma::Window::Window() {}
 forma::Window::Window(const unsigned& width_px, const unsigned& height_px,
@@ -26,6 +27,8 @@ forma::Window::Window(const unsigned& width_px, const unsigned& height_px,
   if (window_ == NULL) {
     forma::log::error("Failed to open window \"%s\"", name.c_str());
   }
+  window::make_context_current(window_);
+  window::init_glad();
 }
 
 forma::Window::~Window() {
