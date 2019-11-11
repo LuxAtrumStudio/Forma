@@ -1,0 +1,18 @@
+name: Development
+on:
+  push:
+    branches-ignore:
+      - 'master'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+    steps:
+      - uses: actions/checkout@v1
+      - name: cmake
+        run: cmake . -DCMAKE_BUILD_TYPE=Debug
+      - name: build
+        run: cmake --build .
