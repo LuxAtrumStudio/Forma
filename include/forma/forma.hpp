@@ -1,9 +1,20 @@
 #ifndef FORMA_HPP_
 #define FORMA_HPP_
 
+#include <cstdlib>
+
+#include "forma/version.hpp"
+
 /**
  * @brief Core graphics engine namespace
  */
-namespace forma {}  // namespace forma
+namespace forma {
+#ifdef DEBUG
+  bool initalize(bool console_logger = true);
+#else
+  bool initalize(bool console_logger = false);
+#endif
+  bool terminate();
+}  // namespace forma
 
 #endif  // FORMA_HPP_

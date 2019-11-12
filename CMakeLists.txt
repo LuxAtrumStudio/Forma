@@ -2,20 +2,30 @@
 # PROJECT
 # ##############################################################################
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
-project(Forma VERSION 0.0.2 LANGUAGES C CXX)
+project(Forma VERSION 0.0.3 LANGUAGES C CXX)
 
-option(STATIC_ANALYSIS "Enable static analysis" TRUE)
+option(STATIC_ANALYSIS "Enable static analysis" FALSE)
 option(EXAMPLES "Compiles examples" TRUE)
+set(GL_VERSION "4.4" STRING "OpenGL version to use")
+list(GET GL_VERSION 0 GL_VERSION)
+string(REPLACE "." ";" GL_VERSION_LIST ${GL_VERSION})
+list(GET GL_VERSION_LIST 0 GL_VERSION_MAJOR)
+list(GET GL_VERSION_LIST 1 GL_VERSION_MINOR)
+message(STATUS "Using OpenGL: ${GL_VERSION_MAJOR}.${GL_VERSION_MINOR}")
 
 # ##############################################################################
 # SOURCE
 # ##############################################################################
 set(SOURCE
-    src/forma.cpp
-    src/gl/glad.c
+  src/forma.cpp
+  src/log.cpp
+  src/graphics/graphics.cpp
+  src/gl/gl.cpp
+  src/gl/glad.c
+  src/gl/glfw.cpp
   )
-configure_file("${PROJECT_SOURCE_DIR}/include/forma/version.h.in"
-  "${PROJECT_SOURCE_DIR}/include/forma/version.h")
+configure_file("${PROJECT_SOURCE_DIR}/include/forma/version.hpp.in"
+  "${PROJECT_SOURCE_DIR}/include/forma/version.hpp")
 set(FORMA_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(FORMA_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -61,13 +71,17 @@ endif()
 # TARGETS
 # ##############################################################################
 find_package(Git REQUIRED)
-add_library(${PROJECT_NAME} ${SOURCE})
+add_library(${PROJECT_NAME} STATIC ${SOURCE})
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_options(${PROJECT_NAME} PUBLIC -Wall -Wextra $<$<CONFIG:Debug>:-O0>$<$<CONFIG:Release>:-O3>)
-set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED TRUE CXX_EXTENSIONS TRUE)
+target_compile_definitions(${PROJECT_NAME} PUBLIC $<$<CONFIG:Debug>:DEBUG>$<$<CONFIG:Release>:RELEASE>)
+set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED TRUE CXX_EXTENSIONS TRUE)
 install(TARGETS ${PROJECT_NAME})
+
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/external)
 target_link_libraries(${PROJECT_NAME} glfw)
+target_link_libraries(${PROJECT_NAME} spdlog::spdlog)
+target_link_libraries(${PROJECT_NAME} ${CMAKE_DL_LIBS})
 
 if(EXAMPLES)
   add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/examples)

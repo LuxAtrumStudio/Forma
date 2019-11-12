@@ -1,12 +1,11 @@
 #include <GLFW/glfw3.h>
+#include <forma/forma.hpp>
 
 int main(void)
 {
     GLFWwindow* window;
 
-    /* Initialize the library */
-    if (!glfwInit())
-        return -1;
+    if(!forma::initalize()) return -1;
 
     /* Create a windowed mode window and its OpenGL context */
     window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
@@ -32,6 +31,6 @@ int main(void)
         glfwPollEvents();
     }
 
-    glfwTerminate();
+    forma::terminate();
     return 0;
 }
