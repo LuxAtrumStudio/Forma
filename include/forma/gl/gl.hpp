@@ -9,6 +9,7 @@
 namespace forma {
   namespace gl {
     bool load_gl();
+    void make_current(GLFWwindow* window);
   } // namespace gl
 } // namespace forma
 

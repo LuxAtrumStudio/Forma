@@ -3,7 +3,8 @@
 
 #include <cstdlib>
 
-#include "forma/version.hpp"
+#include "version.hpp"
+#include "graphics/graphics.hpp"
 
 /**
  * @brief Core graphics engine namespace

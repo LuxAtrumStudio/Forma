@@ -2,7 +2,7 @@
 # PROJECT
 # ##############################################################################
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
-project(Forma VERSION 0.0.3 LANGUAGES C CXX)
+project(Forma VERSION 0.0.4 LANGUAGES C CXX)
 
 option(STATIC_ANALYSIS "Enable static analysis" FALSE)
 option(EXAMPLES "Compiles examples" TRUE)
@@ -20,6 +20,7 @@ set(SOURCE
   src/forma.cpp
   src/log.cpp
   src/graphics/graphics.cpp
+  src/graphics/window.cpp
   src/gl/gl.cpp
   src/gl/glad.c
   src/gl/glfw.cpp
