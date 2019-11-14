@@ -1,7 +1,6 @@
-#ifndef FORMA_GRPAHICS_HPP_
-#define FORMA_GRPAHICS_HPP_
+#ifndef FORMA_GRAPHICS_HPP_
+#define FORMA_GRAPHICS_HPP_
 
-#include "window_builder.hpp"
 #include "window.hpp"
 
 namespace forma {
@@ -11,4 +10,4 @@ namespace forma {
   }  // namespace graphics
 }  // namespace forma
 
-#endif  // FORMA_GRPAHICS_HPP_
+#endif  // FORMA_GRAPHICS_HPP_

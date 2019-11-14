@@ -8,26 +8,20 @@
 
 namespace forma {
   namespace graphics {
-    class Window {
-     public:
-      Window(const std::size_t& w, const std::size_t& h,
-             const std::string& title, bool fullscreen = false);
-      ~Window();
+    namespace window {
+      bool create_window(const std::size_t& w, const std::size_t& h,
+                         const std::string& title, bool fullscreen = false);
+      bool destroy_window();
 
-      inline void destroy() {
-        if (window_ == NULL) return;
-        glfwDestroyWindow(window_);
-        window_ = NULL;
-      }
-      inline constexpr bool valid() const { return window_ != NULL; }
+      bool valid();
+      bool should_close();
 
-     private:
-      std::size_t width_, height_;
-      std::string title_;
-      GLFWmonitor* monitor_;
-      GLFWwindow* window_;
-    };
-  }  // namespace graphics
+      void swap();
+
+      bool resize(const std::size_t& w, const std::size_t& h);
+      void GLFW_framebuffer_size_callback(GLFWwindow*, int w, int h);
+    }  // namespace window
+  }    // namespace graphics
 }  // namespace forma
 
 #endif  // FORMA_GRAPHICS_WINDOW_HPP_

@@ -16,6 +16,8 @@ namespace forma {
   bool initalize(bool console_logger = false);
 #endif
   bool terminate();
+
+  bool is_initalized();
 }  // namespace forma
 
 #endif  // FORMA_HPP_

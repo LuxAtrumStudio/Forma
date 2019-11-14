@@ -16,6 +16,11 @@
 },
 {
   "directory": "/home/arden/Programming/Forma/build",
+  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/include -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/spdlog/include  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma.dir/src/graphics/window.cpp.o -c /home/arden/Programming/Forma/src/graphics/window.cpp",
+  "file": "/home/arden/Programming/Forma/src/graphics/window.cpp"
+},
+{
+  "directory": "/home/arden/Programming/Forma/build",
   "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/include -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/spdlog/include  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma.dir/src/gl/gl.cpp.o -c /home/arden/Programming/Forma/src/gl/gl.cpp",
   "file": "/home/arden/Programming/Forma/src/gl/gl.cpp"
 },

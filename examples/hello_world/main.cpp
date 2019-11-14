@@ -1,18 +1,13 @@
 // #include <GLFW/glfw3.h>
 #include <forma/forma.hpp>
 
-int main(void)
-{
-    if(!forma::initalize()) return -1;
-
-    forma::graphics::Window window(640, 480, "Hello World");
-    if(!window.valid()) {
-      forma::terminate();
-      return -1;
-    }
-    // /* Loop until the user closes the window */
-    // while (!glfwWindowShouldClose(window))
-    // {
+int main(void) {
+  if (!forma::graphics::window::create_window(640, 480, "Hello world")) {
+    forma::terminate();
+    return -1;
+  }
+  while (!forma::graphics::window::should_close()) {
+    forma::graphics::window::swap();
     //     /* Render here */
     //     // glClear(GL_COLOR_BUFFER_BIT);
     //
@@ -21,9 +16,8 @@ int main(void)
     //
     //     /* Poll for and process events */
     //     glfwPollEvents();
-    // }
+  }
 
-    window.destroy();
-    forma::terminate();
-    return 0;
+  forma::terminate();
+  return 0;
 }
