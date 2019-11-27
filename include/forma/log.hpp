@@ -35,6 +35,12 @@ namespace forma {
      */
     bool initalize_logger(const bool& console_logger);
     /**
+     * @brief Determins if the logger is already initalized
+     *
+     * @return ``true`` if the logger has been initalized, ``false`` otherwise.
+     */
+    bool is_initalized();
+    /**
      * @brief Logs a trace message
      *
      * @tparam _ARGS Type of additional arguments

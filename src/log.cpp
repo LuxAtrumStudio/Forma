@@ -9,6 +9,8 @@
 #include <memory>
 #include <string_view>
 
+static bool is_initalized_ = false;
+
 bool forma::logger::initalize_logger(const bool& console_logger) {
   try {
     auto file_sink =
@@ -25,9 +27,12 @@ bool forma::logger::initalize_logger(const bool& console_logger) {
           "", spdlog::sinks_init_list({file_sink})));
     }
     spdlog::set_level(spdlog::level::trace);
+    is_initalized_ = true;
     return true;
   } catch (const spdlog::spdlog_ex& ex) {
     fprintf(stderr, "Failed to initalize logging %s\n", ex.what());
     return false;
   }
 }
+
+bool forma::logger::is_initalized() { return is_initalized_; }
