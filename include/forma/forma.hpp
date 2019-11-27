@@ -6,6 +6,7 @@
 #include <functional>
 
 #include "version.hpp"
+#include "key.hpp"
 
 /**
  * @brief Core graphics engine namespace

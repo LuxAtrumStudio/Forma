@@ -8,6 +8,7 @@
 #include "forma/gl/gl.h"
 #include "forma/log.hpp"
 #include "forma/version.hpp"
+#include "forma/key.hpp"
 
 static GLFWwindow* window_ = NULL;
 static std::size_t width_ = 0, height_ = 0;

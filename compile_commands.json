@@ -1,41 +1,6 @@
 [
 {
   "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DForma_shared_EXPORTS -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g -fPIC   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_shared.dir/src/forma.cpp.o -c /home/arden/programming/cpp/Forma/src/forma.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/forma.cpp"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DForma_shared_EXPORTS -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g -fPIC   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_shared.dir/src/log.cpp.o -c /home/arden/programming/cpp/Forma/src/log.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/log.cpp"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DForma_shared_EXPORTS -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g -fPIC   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_shared.dir/src/graphics/graphics.cpp.o -c /home/arden/programming/cpp/Forma/src/graphics/graphics.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/graphics/graphics.cpp"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DForma_shared_EXPORTS -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g -fPIC   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_shared.dir/src/graphics/window.cpp.o -c /home/arden/programming/cpp/Forma/src/graphics/window.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/graphics/window.cpp"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DForma_shared_EXPORTS -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g -fPIC   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_shared.dir/src/gl/gl.cpp.o -c /home/arden/programming/cpp/Forma/src/gl/gl.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/gl/gl.cpp"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/cc -DDEBUG -DForma_shared_EXPORTS -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g -fPIC   -Wall -Wextra -O0 -o CMakeFiles/Forma_shared.dir/src/gl/glad.c.o   -c /home/arden/programming/cpp/Forma/src/gl/glad.c",
-  "file": "/home/arden/programming/cpp/Forma/src/gl/glad.c"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DForma_shared_EXPORTS -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g -fPIC   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_shared.dir/src/gl/glfw.cpp.o -c /home/arden/programming/cpp/Forma/src/gl/glfw.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/gl/glfw.cpp"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
   "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/forma.cpp.o -c /home/arden/programming/cpp/Forma/src/forma.cpp",
   "file": "/home/arden/programming/cpp/Forma/src/forma.cpp"
 },
@@ -46,28 +11,8 @@
 },
 {
   "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/graphics/graphics.cpp.o -c /home/arden/programming/cpp/Forma/src/graphics/graphics.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/graphics/graphics.cpp"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/graphics/window.cpp.o -c /home/arden/programming/cpp/Forma/src/graphics/window.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/graphics/window.cpp"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/gl/gl.cpp.o -c /home/arden/programming/cpp/Forma/src/gl/gl.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/gl/gl.cpp"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
   "command": "/sbin/cc -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g   -Wall -Wextra -O0 -o CMakeFiles/Forma_static.dir/src/gl/glad.c.o   -c /home/arden/programming/cpp/Forma/src/gl/glad.c",
   "file": "/home/arden/programming/cpp/Forma/src/gl/glad.c"
-},
-{
-  "directory": "/home/arden/programming/cpp/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/cpp/Forma/include -I/home/arden/programming/cpp/Forma/external/glfw/include -I/home/arden/programming/cpp/Forma/external/spdlog/include  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/gl/glfw.cpp.o -c /home/arden/programming/cpp/Forma/src/gl/glfw.cpp",
-  "file": "/home/arden/programming/cpp/Forma/src/gl/glfw.cpp"
 },
 {
   "directory": "/home/arden/programming/cpp/Forma/build/external/glfw/src",
