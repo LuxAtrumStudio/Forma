@@ -1,38 +1,50 @@
 #include "forma/log.hpp"
 
-#include <spdlog/fmt/ostr.h>
-#include <spdlog/sinks/daily_file_sink.h>
+#include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
 
-#include <cstdio>
+#include <iostream>
 #include <memory>
-#include <string_view>
 
-static bool is_initalized_ = false;
-
-bool forma::logger::initalize_logger(const bool& console_logger) {
+bool forma::log::initalize_logger(const std::size_t& verbosity) {
   try {
-    auto file_sink =
-        std::make_shared<spdlog::sinks::daily_file_sink_mt>("logs/forma", 0, 0);
-    file_sink->set_level(spdlog::level::trace);
-    if (console_logger) {
-      auto console_sink =
-          std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
-      console_sink->set_level(spdlog::level::trace);
-      spdlog::set_default_logger(std::make_shared<spdlog::logger>(
-          "", spdlog::sinks_init_list({console_sink, file_sink})));
-    } else {
-      spdlog::set_default_logger(std::make_shared<spdlog::logger>(
-          "", spdlog::sinks_init_list({file_sink})));
+    auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+    switch (verbosity) {
+      case 6:
+        console_sink->set_level(spdlog::level::trace);
+        break;
+      case 5:
+        console_sink->set_level(spdlog::level::debug);
+        break;
+      case 4:
+        console_sink->set_level(spdlog::level::info);
+        break;
+      case 3:
+        console_sink->set_level(spdlog::level::warn);
+        break;
+      case 2:
+        console_sink->set_level(spdlog::level::err);
+        break;
+      case 1:
+        console_sink->set_level(spdlog::level::critical);
+        break;
+      case 0:
+        console_sink->set_level(spdlog::level::off);
+        break;
     }
+
+    auto file_sink =
+        std::make_shared<spdlog::sinks::basic_file_sink_mt>("forma.log", true);
+    file_sink->set_level(spdlog::level::trace);
+
+    spdlog::set_default_logger(std::make_shared<spdlog::logger>(
+        "Forma", spdlog::sinks_init_list({console_sink, file_sink})));
     spdlog::set_level(spdlog::level::trace);
-    is_initalized_ = true;
+
     return true;
   } catch (const spdlog::spdlog_ex& ex) {
-    fprintf(stderr, "Failed to initalize logging %s\n", ex.what());
+    std::cerr << "Log initialization failed: " << ex.what() << std::endl;
     return false;
   }
 }
-
-bool forma::logger::is_initalized() { return is_initalized_; }

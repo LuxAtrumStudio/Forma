@@ -20,3 +20,6 @@ option(GLFW_VULKAN_STATIC "Assume the Vulkan loader is linked with the applicati
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/glfw EXCLUDE_FROM_ALL)
 load_external(spdlog)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/spdlog EXCLUDE_FROM_ALL)
+load_external(glm)
+option(BUILD_STATIC_LIBS "" ON)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/glm EXCLUDE_FROM_ALL)

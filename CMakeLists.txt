@@ -4,25 +4,26 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
 project(
   Forma
-  VERSION 0.0.5
+  VERSION 0.0.6
   LANGUAGES C CXX)
 
 option(STATIC_ANALYSIS "Enable static analysis" FALSE)
 option(BUILD_SHARED "Compile shared library" FALSE)
+option(DOCS "Compile documentation" FALSE)
 option(EXAMPLES "Compiles examples" TRUE)
-set(GL_VERSION "4.4" STRING "OpenGL version to use")
-list(GET GL_VERSION 0 GL_VERSION)
-string(REPLACE "." ";" GL_VERSION_LIST ${GL_VERSION})
-list(GET GL_VERSION_LIST 0 GL_VERSION_MAJOR)
-list(GET GL_VERSION_LIST 1 GL_VERSION_MINOR)
-message(STATUS "Using OpenGL: ${GL_VERSION_MAJOR}.${GL_VERSION_MINOR}")
+option(USE_GLES, "Use EGL" FALSE)
 
 # ##############################################################################
 # SOURCE
 # ##############################################################################
-set(SOURCE src/forma.cpp src/log.cpp src/gl/glad.c)
+set(SOURCE src/log.cpp)
+if(USE_GLES)
+  list(APPEND SOURCES src/glad_egl.c)
+else()
+  list(APPEND SOURCES src/glad.c)
+endif()
 configure_file("${PROJECT_SOURCE_DIR}/include/forma/version.hpp.in"
-               "${PROJECT_SOURCE_DIR}/include/forma/version.hpp")
+  "${PROJECT_SOURCE_DIR}/include/forma/version.hpp")
 set(FORMA_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})
 set(FORMA_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -31,8 +32,8 @@ set(FORMA_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 # ##############################################################################
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE
-      "Debug"
-      CACHE STRING "Choose the type of build" FORCE)
+    "Debug"
+    CACHE STRING "Choose the type of build" FORCE)
   set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release")
 endif()
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -40,8 +41,8 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
   if(EXISTS "${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json")
     execute_process(
       COMMAND ${CMAKE_COMMAND} -E copy_if_different
-              ${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json
-              ${CMAKE_CURRENT_SOURCE_DIR}/compile_commands.json)
+      ${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json
+      ${CMAKE_CURRENT_SOURCE_DIR}/compile_commands.json)
   endif()
 endif()
 
@@ -74,19 +75,20 @@ add_library(${PROJECT_NAME}_static STATIC ${SOURCE})
 add_library(${PROJECT_NAME}::static ALIAS ${PROJECT_NAME}_static)
 
 target_include_directories(${PROJECT_NAME}_static
-                           PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+  PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_options(
   ${PROJECT_NAME}_static PRIVATE -Wall -Wextra
-                                 $<$<CONFIG:Debug>:-O0>$<$<CONFIG:Release>:-O3>)
+  $<$<CONFIG:Debug>:-O0>$<$<CONFIG:Release>:-O3>)
 target_compile_definitions(${PROJECT_NAME}_static PRIVATE
-                           $<$<CONFIG:Debug>:DEBUG>$<$<CONFIG:Release>:RELEASE>)
+  $<$<CONFIG:Debug>:DEBUG>$<$<CONFIG:Release>:RELEASE>)
 set_target_properties(
   ${PROJECT_NAME}_static PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED TRUE
-                                    CXX_EXTENSIONS TRUE)
+  CXX_EXTENSIONS TRUE)
 
-target_link_libraries(${PROJECT_NAME}_static glfw)
-target_link_libraries(${PROJECT_NAME}_static spdlog::spdlog)
-target_link_libraries(${PROJECT_NAME}_static ${CMAKE_DL_LIBS})
+target_link_libraries(${PROJECT_NAME}_static PUBLIC glfw)
+target_link_libraries(${PROJECT_NAME}_static PUBLIC spdlog::spdlog)
+target_link_libraries(${PROJECT_NAME}_static PUBLIC glm::glm_static)
+target_link_libraries(${PROJECT_NAME}_static PUBLIC ${CMAKE_DL_LIBS})
 
 install(TARGETS ${PROJECT_NAME}_static)
 
@@ -95,7 +97,7 @@ if(BUILD_SHARED)
   add_library(${PROJECT_NAME}::shared ALIAS ${PROJECT_NAME}_shared)
 
   target_include_directories(${PROJECT_NAME}_shared
-                             PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
   target_compile_options(
     ${PROJECT_NAME}_shared
     PRIVATE -Wall -Wextra $<$<CONFIG:Debug>:-O0>$<$<CONFIG:Release>:-O3>)
@@ -104,11 +106,12 @@ if(BUILD_SHARED)
     $<$<CONFIG:Debug>:DEBUG>$<$<CONFIG:Release>:RELEASE>)
   set_target_properties(
     ${PROJECT_NAME}_shared PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED
-                                      TRUE CXX_EXTENSIONS TRUE)
+    TRUE CXX_EXTENSIONS TRUE)
 
-  target_link_libraries(${PROJECT_NAME}_shared glfw)
-  target_link_libraries(${PROJECT_NAME}_shared spdlog::spdlog)
-  target_link_libraries(${PROJECT_NAME}_shared ${CMAKE_DL_LIBS})
+  target_link_libraries(${PROJECT_NAME}_shared PUBLIC glfw)
+  target_link_libraries(${PROJECT_NAME}_shared PUBLIC spdlog::spdlog)
+  target_link_libraries(${PROJECT_NAME}_shared PUBLIC glm::glm_shared)
+  target_link_libraries(${PROJECT_NAME}_shared PUBLIC ${CMAKE_DL_LIBS})
 
   install(TARGETS ${PROJECT_NAME}_shared)
 
@@ -118,7 +121,9 @@ else()
 endif()
 
 if(EXAMPLES)
-  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/examples)
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/samples)
+endif()
+if(DOCS)
 endif()
 
 # ##############################################################################
