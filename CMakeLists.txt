@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.3 FATAL_ERROR)
 project(
   Forma
-  VERSION 0.0.6
+  VERSION 0.0.7
   LANGUAGES C CXX)
 
 option(STATIC_ANALYSIS "Enable static analysis" FALSE)
@@ -16,7 +16,7 @@ option(USE_GLES, "Use EGL" FALSE)
 # ##############################################################################
 # SOURCE
 # ##############################################################################
-set(SOURCE src/log.cpp)
+set(SOURCE src/log.cpp src/image.cpp)
 if(USE_GLES)
   list(APPEND SOURCES src/glad_egl.c)
 else()

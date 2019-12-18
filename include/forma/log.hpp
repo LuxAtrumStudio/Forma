@@ -26,7 +26,7 @@
 #define LCRITICAL(...) SPDLOG_CRITICAL(__VA_ARGS__)
 
 namespace forma {
-  namespace log {
+  namespace logger {
     bool initalize_logger(const std::size_t& verbosity);
     template <typename... _ARGS>
     inline void trace(std::string_view fmt, const _ARGS&... args) {
@@ -52,7 +52,7 @@ namespace forma {
     inline void critical(std::string_view fmt, const _ARGS&... args) {
       spdlog::critical(fmt, args...);
     }
-  }  // namespace log
+  }  // namespace logger
 }  // namespace forma
 
 #endif /* end of include guard: LOG_HPP_KBLFV4YC */

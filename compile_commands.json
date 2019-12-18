@@ -5,6 +5,11 @@
   "file": "/home/arden/programming/Forma/src/log.cpp"
 },
 {
+  "directory": "/home/arden/programming/Forma/build",
+  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/image.cpp.o -c /home/arden/programming/Forma/src/image.cpp",
+  "file": "/home/arden/programming/Forma/src/image.cpp"
+},
+{
   "directory": "/home/arden/programming/Forma/build/external/glfw/src",
   "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/context.c.o   -c /home/arden/programming/Forma/external/glfw/src/context.c",
   "file": "/home/arden/programming/Forma/external/glfw/src/context.c"
@@ -123,5 +128,10 @@
   "directory": "/home/arden/programming/Forma/build/external/glm/glm",
   "command": "/sbin/c++  -Dglm_shared_EXPORTS -I/home/arden/programming/Forma/external/glm/glm/..  -g -fPIC   -o CMakeFiles/glm_shared.dir/detail/glm.cpp.o -c /home/arden/programming/Forma/external/glm/glm/detail/glm.cpp",
   "file": "/home/arden/programming/Forma/external/glm/glm/detail/glm.cpp"
+},
+{
+  "directory": "/home/arden/programming/Forma/build/samples",
+  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -o CMakeFiles/pong.dir/pong/main.cpp.o -c /home/arden/programming/Forma/samples/pong/main.cpp",
+  "file": "/home/arden/programming/Forma/samples/pong/main.cpp"
 }
 ]

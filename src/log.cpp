@@ -7,7 +7,7 @@
 #include <iostream>
 #include <memory>
 
-bool forma::log::initalize_logger(const std::size_t& verbosity) {
+bool forma::logger::initalize_logger(const std::size_t& verbosity) {
   try {
     auto console_sink = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
     switch (verbosity) {
