@@ -4,6 +4,7 @@
 #include <string>
 
 #include "math.hpp"
+#include "gl.hpp"
 
 namespace forma {
   namespace image {
@@ -60,10 +61,10 @@ namespace forma {
         }
       }
 
-      // operator GLFWimage() const {
-      //   return GLFWimage{static_cast<int>(width), static_cast<int>(height),
-      //                    pixels};
-      // }
+      inline operator GLFWimage() const {
+        return GLFWimage{static_cast<int>(width), static_cast<int>(height),
+                         pixels};
+      }
 
       inline bool is_valid() const { return pixels != nullptr; }
 

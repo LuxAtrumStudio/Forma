@@ -25,6 +25,11 @@
   "file": "/home/arden/programming/Forma/src/gl.cpp"
 },
 {
+  "directory": "/home/arden/programming/Forma/build",
+  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/color.cpp.o -c /home/arden/programming/Forma/src/color.cpp",
+  "file": "/home/arden/programming/Forma/src/color.cpp"
+},
+{
   "directory": "/home/arden/programming/Forma/build/external/glfw/src",
   "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/context.c.o   -c /home/arden/programming/Forma/external/glfw/src/context.c",
   "file": "/home/arden/programming/Forma/external/glfw/src/context.c"

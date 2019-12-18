@@ -55,6 +55,7 @@ namespace forma {
     bool is_focused();
     float get_opacity();
     uvec2 get_size();
+    uvec2 get_pos();
     uvec2 get_framebuffer_size();
     vec2 get_content_scale();
 
@@ -68,8 +69,7 @@ namespace forma {
     void set_maximization(bool setting = true);
     void toggle_visibility();
     void set_visibility(bool setting = true);
-    void toggle_focus();
-    void set_focus(bool setting = true);
+    void get_focus();
     void toggle_decoration();
     void set_decoration(bool setting = true);
     void toggle_resizability();
