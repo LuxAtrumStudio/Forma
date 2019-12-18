@@ -1,9 +1,7 @@
 #ifndef IMAGE_HPP_4I7NI2UF
 #define IMAGE_HPP_4I7NI2UF
 
-#include <GLFW/glfw3.h>
-
-#include <string_view>
+#include <string>
 
 #include "math.hpp"
 
@@ -62,10 +60,10 @@ namespace forma {
         }
       }
 
-      operator GLFWimage() const {
-        return GLFWimage{static_cast<int>(width), static_cast<int>(height),
-                         pixels};
-      }
+      // operator GLFWimage() const {
+      //   return GLFWimage{static_cast<int>(width), static_cast<int>(height),
+      //                    pixels};
+      // }
 
       inline bool is_valid() const { return pixels != nullptr; }
 
@@ -74,8 +72,8 @@ namespace forma {
       std::uint8_t* pixels;
     };
 
-    Image load(const std::string_view& file_path);
-    bool save(const std::string_view& file_path, const Image& img,
+    Image load(const std::string& file_path);
+    bool save(const std::string& file_path, const Image& img,
               bool flip = false);
   }  // namespace image
 }  // namespace forma

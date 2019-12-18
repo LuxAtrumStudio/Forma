@@ -1,6 +1,10 @@
 #ifndef FORMA_HPP_06GJ7OYX
 #define FORMA_HPP_06GJ7OYX
 
+#include "window.hpp"
+#include "image.hpp"
+#include "version.hpp"
+
 namespace forma
 {
 

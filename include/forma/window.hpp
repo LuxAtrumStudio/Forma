@@ -1,6 +1,9 @@
 #ifndef WINDOW_HPP_EBAIFE1A
 #define WINDOW_HPP_EBAIFE1A
 
+#include <cstdlib>
+#include <string>
+
 #include "image.hpp"
 #include "math.hpp"
 
@@ -35,10 +38,12 @@ namespace forma {
                 std::uint32_t flags = RESIZABLE | VISIBLE | DECORATED |
                                       FOCUSED | AUTO_ICONIFY | CENTER_CURSOR |
                                       FOCUS_ON_SHOW);
-    bool create(const uvec2& dim, , const std::string& title,
+    bool create(const uvec2& dim, const std::string& title,
                 std::uint32_t flags = RESIZABLE | VISIBLE | DECORATED |
                                       FOCUSED | AUTO_ICONIFY | CENTER_CURSOR |
                                       FOCUS_ON_SHOW);
+    bool should_close();
+    void update();
     bool destroy();
 
     bool is_fullscreen();
@@ -78,7 +83,7 @@ namespace forma {
     void set_aspect_ratio(const uvec2& ratio);
     void set_pos(const uvec2& pos);
     void set_title(const std::string& title);
-    void add_icon(const Image& img);
+    void add_icon(const image::Image& img);
     void clear_icons();
 
     void request_attention();
