@@ -1,10 +1,14 @@
 #include <forma/forma.hpp>
+#include "forma/window.hpp"
+
+using namespace forma;
 
 int main(void) {
-  forma::window::create({500, 500}, "PONG");
-  while (!forma::window::should_close()) {
-    forma::window::update();
+  window::create({500, 500}, "PONG");
+  // graphics::set_clear(forma::RED);
+  while (!window::should_close()) {
+    window::update();
   }
-  forma::window::destroy();
+  window::destroy();
   return 0;
 }

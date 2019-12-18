@@ -16,7 +16,7 @@ option(USE_GLES, "Use EGL" FALSE)
 # ##############################################################################
 # SOURCE
 # ##############################################################################
-set(SOURCE src/log.cpp src/image.cpp src/window.cpp src/glad.c src/gl.cpp)
+set(SOURCE src/log.cpp src/image.cpp src/window.cpp src/glad.c src/gl.cpp src/color.cpp)
 configure_file("${PROJECT_SOURCE_DIR}/include/forma/version.hpp.in"
   "${PROJECT_SOURCE_DIR}/include/forma/version.hpp")
 set(FORMA_BINARY_DIR ${CMAKE_CURRENT_BINARY_DIR})

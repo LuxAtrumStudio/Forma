@@ -108,6 +108,7 @@ bool forma::window::should_close() {
 }
 void forma::window::update() {
   glfwSwapBuffers(glfw_window);
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glfwPollEvents();
 }
 bool forma::window::destroy() {

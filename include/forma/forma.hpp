@@ -4,6 +4,7 @@
 #include "window.hpp"
 #include "image.hpp"
 #include "version.hpp"
+#include "color.hpp"
 
 namespace forma
 {
