@@ -1,157 +1,152 @@
 [
 {
-  "directory": "/home/arden/programming/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/log.cpp.o -c /home/arden/programming/Forma/src/log.cpp",
-  "file": "/home/arden/programming/Forma/src/log.cpp"
+  "directory": "/home/arden/Programming/Forma/build",
+  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/include -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/spdlog/include -I/home/arden/Programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/log.cpp.o -c /home/arden/Programming/Forma/src/log.cpp",
+  "file": "/home/arden/Programming/Forma/src/log.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/image.cpp.o -c /home/arden/programming/Forma/src/image.cpp",
-  "file": "/home/arden/programming/Forma/src/image.cpp"
+  "directory": "/home/arden/Programming/Forma/build",
+  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/include -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/spdlog/include -I/home/arden/Programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/image.cpp.o -c /home/arden/Programming/Forma/src/image.cpp",
+  "file": "/home/arden/Programming/Forma/src/image.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/window.cpp.o -c /home/arden/programming/Forma/src/window.cpp",
-  "file": "/home/arden/programming/Forma/src/window.cpp"
+  "directory": "/home/arden/Programming/Forma/build",
+  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/include -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/spdlog/include -I/home/arden/Programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/window.cpp.o -c /home/arden/Programming/Forma/src/window.cpp",
+  "file": "/home/arden/Programming/Forma/src/window.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build",
-  "command": "/sbin/cc -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -o CMakeFiles/Forma_static.dir/src/glad.c.o   -c /home/arden/programming/Forma/src/glad.c",
-  "file": "/home/arden/programming/Forma/src/glad.c"
+  "directory": "/home/arden/Programming/Forma/build",
+  "command": "/sbin/cc -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/include -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/spdlog/include -I/home/arden/Programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -o CMakeFiles/Forma_static.dir/src/glad.c.o   -c /home/arden/Programming/Forma/src/glad.c",
+  "file": "/home/arden/Programming/Forma/src/glad.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/gl.cpp.o -c /home/arden/programming/Forma/src/gl.cpp",
-  "file": "/home/arden/programming/Forma/src/gl.cpp"
+  "directory": "/home/arden/Programming/Forma/build",
+  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/include -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/spdlog/include -I/home/arden/Programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/gl.cpp.o -c /home/arden/Programming/Forma/src/gl.cpp",
+  "file": "/home/arden/Programming/Forma/src/gl.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build",
-  "command": "/sbin/c++  -DDEBUG -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -Wall -Wextra -O0 -std=gnu++17 -o CMakeFiles/Forma_static.dir/src/color.cpp.o -c /home/arden/programming/Forma/src/color.cpp",
-  "file": "/home/arden/programming/Forma/src/color.cpp"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/context.c.o   -c /home/arden/Programming/Forma/external/glfw/src/context.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/context.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/context.c.o   -c /home/arden/programming/Forma/external/glfw/src/context.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/context.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/init.c.o   -c /home/arden/Programming/Forma/external/glfw/src/init.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/init.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/init.c.o   -c /home/arden/programming/Forma/external/glfw/src/init.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/init.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/input.c.o   -c /home/arden/Programming/Forma/external/glfw/src/input.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/input.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/input.c.o   -c /home/arden/programming/Forma/external/glfw/src/input.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/input.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/monitor.c.o   -c /home/arden/Programming/Forma/external/glfw/src/monitor.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/monitor.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/monitor.c.o   -c /home/arden/programming/Forma/external/glfw/src/monitor.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/monitor.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/vulkan.c.o   -c /home/arden/Programming/Forma/external/glfw/src/vulkan.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/vulkan.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/vulkan.c.o   -c /home/arden/programming/Forma/external/glfw/src/vulkan.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/vulkan.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/window.c.o   -c /home/arden/Programming/Forma/external/glfw/src/window.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/window.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -Wdeclaration-after-statement -o CMakeFiles/glfw.dir/window.c.o   -c /home/arden/programming/Forma/external/glfw/src/window.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/window.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/x11_init.c.o   -c /home/arden/Programming/Forma/external/glfw/src/x11_init.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/x11_init.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/x11_init.c.o   -c /home/arden/programming/Forma/external/glfw/src/x11_init.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/x11_init.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/x11_monitor.c.o   -c /home/arden/Programming/Forma/external/glfw/src/x11_monitor.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/x11_monitor.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/x11_monitor.c.o   -c /home/arden/programming/Forma/external/glfw/src/x11_monitor.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/x11_monitor.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/x11_window.c.o   -c /home/arden/Programming/Forma/external/glfw/src/x11_window.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/x11_window.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/x11_window.c.o   -c /home/arden/programming/Forma/external/glfw/src/x11_window.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/x11_window.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/xkb_unicode.c.o   -c /home/arden/Programming/Forma/external/glfw/src/xkb_unicode.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/xkb_unicode.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/xkb_unicode.c.o   -c /home/arden/programming/Forma/external/glfw/src/xkb_unicode.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/xkb_unicode.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/posix_time.c.o   -c /home/arden/Programming/Forma/external/glfw/src/posix_time.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/posix_time.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/posix_time.c.o   -c /home/arden/programming/Forma/external/glfw/src/posix_time.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/posix_time.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/posix_thread.c.o   -c /home/arden/Programming/Forma/external/glfw/src/posix_thread.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/posix_thread.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/posix_thread.c.o   -c /home/arden/programming/Forma/external/glfw/src/posix_thread.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/posix_thread.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/glx_context.c.o   -c /home/arden/Programming/Forma/external/glfw/src/glx_context.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/glx_context.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/glx_context.c.o   -c /home/arden/programming/Forma/external/glfw/src/glx_context.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/glx_context.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/egl_context.c.o   -c /home/arden/Programming/Forma/external/glfw/src/egl_context.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/egl_context.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/egl_context.c.o   -c /home/arden/programming/Forma/external/glfw/src/egl_context.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/egl_context.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/osmesa_context.c.o   -c /home/arden/Programming/Forma/external/glfw/src/osmesa_context.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/osmesa_context.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/osmesa_context.c.o   -c /home/arden/programming/Forma/external/glfw/src/osmesa_context.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/osmesa_context.c"
+  "directory": "/home/arden/Programming/Forma/build/external/glfw/src",
+  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/glfw/src -I/home/arden/Programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/linux_joystick.c.o   -c /home/arden/Programming/Forma/external/glfw/src/linux_joystick.c",
+  "file": "/home/arden/Programming/Forma/external/glfw/src/linux_joystick.c"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glfw/src",
-  "command": "/sbin/cc -D_GLFW_USE_CONFIG_H -Dglfw_EXPORTS -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/glfw/src -I/home/arden/programming/Forma/build/external/glfw/src  -g -fPIC   -Wall -fvisibility=hidden -o CMakeFiles/glfw.dir/linux_joystick.c.o   -c /home/arden/programming/Forma/external/glfw/src/linux_joystick.c",
-  "file": "/home/arden/programming/Forma/external/glfw/src/linux_joystick.c"
+  "directory": "/home/arden/Programming/Forma/build/external/spdlog",
+  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/spdlog.cpp.o -c /home/arden/Programming/Forma/external/spdlog/src/spdlog.cpp",
+  "file": "/home/arden/Programming/Forma/external/spdlog/src/spdlog.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/spdlog",
-  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/spdlog.cpp.o -c /home/arden/programming/Forma/external/spdlog/src/spdlog.cpp",
-  "file": "/home/arden/programming/Forma/external/spdlog/src/spdlog.cpp"
+  "directory": "/home/arden/Programming/Forma/build/external/spdlog",
+  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o -c /home/arden/Programming/Forma/external/spdlog/src/stdout_sinks.cpp",
+  "file": "/home/arden/Programming/Forma/external/spdlog/src/stdout_sinks.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/spdlog",
-  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o -c /home/arden/programming/Forma/external/spdlog/src/stdout_sinks.cpp",
-  "file": "/home/arden/programming/Forma/external/spdlog/src/stdout_sinks.cpp"
+  "directory": "/home/arden/Programming/Forma/build/external/spdlog",
+  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/color_sinks.cpp.o -c /home/arden/Programming/Forma/external/spdlog/src/color_sinks.cpp",
+  "file": "/home/arden/Programming/Forma/external/spdlog/src/color_sinks.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/spdlog",
-  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/color_sinks.cpp.o -c /home/arden/programming/Forma/external/spdlog/src/color_sinks.cpp",
-  "file": "/home/arden/programming/Forma/external/spdlog/src/color_sinks.cpp"
+  "directory": "/home/arden/Programming/Forma/build/external/spdlog",
+  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/file_sinks.cpp.o -c /home/arden/Programming/Forma/external/spdlog/src/file_sinks.cpp",
+  "file": "/home/arden/Programming/Forma/external/spdlog/src/file_sinks.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/spdlog",
-  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/file_sinks.cpp.o -c /home/arden/programming/Forma/external/spdlog/src/file_sinks.cpp",
-  "file": "/home/arden/programming/Forma/external/spdlog/src/file_sinks.cpp"
+  "directory": "/home/arden/Programming/Forma/build/external/spdlog",
+  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/async.cpp.o -c /home/arden/Programming/Forma/external/spdlog/src/async.cpp",
+  "file": "/home/arden/Programming/Forma/external/spdlog/src/async.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/spdlog",
-  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/async.cpp.o -c /home/arden/programming/Forma/external/spdlog/src/async.cpp",
-  "file": "/home/arden/programming/Forma/external/spdlog/src/async.cpp"
+  "directory": "/home/arden/Programming/Forma/build/external/spdlog",
+  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/fmt.cpp.o -c /home/arden/Programming/Forma/external/spdlog/src/fmt.cpp",
+  "file": "/home/arden/Programming/Forma/external/spdlog/src/fmt.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/spdlog",
-  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/external/spdlog/include  -g   -Wall -Wextra -Wconversion -pedantic -Wfatal-errors -std=c++11 -o CMakeFiles/spdlog.dir/src/fmt.cpp.o -c /home/arden/programming/Forma/external/spdlog/src/fmt.cpp",
-  "file": "/home/arden/programming/Forma/external/spdlog/src/fmt.cpp"
+  "directory": "/home/arden/Programming/Forma/build/external/glm/glm",
+  "command": "/sbin/c++   -I/home/arden/Programming/Forma/external/glm/glm/..  -g   -o CMakeFiles/glm_static.dir/detail/glm.cpp.o -c /home/arden/Programming/Forma/external/glm/glm/detail/glm.cpp",
+  "file": "/home/arden/Programming/Forma/external/glm/glm/detail/glm.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glm/glm",
-  "command": "/sbin/c++   -I/home/arden/programming/Forma/external/glm/glm/..  -g   -o CMakeFiles/glm_static.dir/detail/glm.cpp.o -c /home/arden/programming/Forma/external/glm/glm/detail/glm.cpp",
-  "file": "/home/arden/programming/Forma/external/glm/glm/detail/glm.cpp"
+  "directory": "/home/arden/Programming/Forma/build/external/glm/glm",
+  "command": "/sbin/c++  -Dglm_shared_EXPORTS -I/home/arden/Programming/Forma/external/glm/glm/..  -g -fPIC   -o CMakeFiles/glm_shared.dir/detail/glm.cpp.o -c /home/arden/Programming/Forma/external/glm/glm/detail/glm.cpp",
+  "file": "/home/arden/Programming/Forma/external/glm/glm/detail/glm.cpp"
 },
 {
-  "directory": "/home/arden/programming/Forma/build/external/glm/glm",
-  "command": "/sbin/c++  -Dglm_shared_EXPORTS -I/home/arden/programming/Forma/external/glm/glm/..  -g -fPIC   -o CMakeFiles/glm_shared.dir/detail/glm.cpp.o -c /home/arden/programming/Forma/external/glm/glm/detail/glm.cpp",
-  "file": "/home/arden/programming/Forma/external/glm/glm/detail/glm.cpp"
-},
-{
-  "directory": "/home/arden/programming/Forma/build/samples",
-  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/programming/Forma/include -I/home/arden/programming/Forma/external/glfw/include -I/home/arden/programming/Forma/external/spdlog/include -I/home/arden/programming/Forma/external/glm/glm/..  -g   -o CMakeFiles/pong.dir/pong/main.cpp.o -c /home/arden/programming/Forma/samples/pong/main.cpp",
-  "file": "/home/arden/programming/Forma/samples/pong/main.cpp"
+  "directory": "/home/arden/Programming/Forma/build/samples",
+  "command": "/sbin/c++  -DSPDLOG_COMPILED_LIB -I/home/arden/Programming/Forma/include -I/home/arden/Programming/Forma/external/glfw/include -I/home/arden/Programming/Forma/external/spdlog/include -I/home/arden/Programming/Forma/external/glm/glm/..  -g   -o CMakeFiles/pong.dir/pong/main.cpp.o -c /home/arden/Programming/Forma/samples/pong/main.cpp",
+  "file": "/home/arden/Programming/Forma/samples/pong/main.cpp"
 }
 ]
